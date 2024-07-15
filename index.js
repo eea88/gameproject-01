@@ -2,9 +2,7 @@ console.log("INDEX JS RUNNING");
 const game = {
     score:0,
     enemies: [],
-    hastati: [],
-    principes: [],
-    triarii: [],
+    soldiers: [],
 }
 
 const gameArea = document.querySelector("#game-area");
@@ -30,5 +28,37 @@ window.requestAnimationFrame(playGame)
 function warriorAttack(){
     setTimeout(()=>{
 
-    console.log("Attacks will go here");},1000)
+
+
+
+
+    
+    ;},1000)
 }
+
+function attackRange(){
+    
+}
+/*checkCollisions(){
+    game.hastati.forEach((hastati)=>{
+    const hastatiLeftEdge = this.positionX;
+    const hastatiRightEdge = this.positionX + this.element.offsetWidth;
+    const hastatiTopEdge = this.positionY;
+    const hastatiButtomEdge = this.positionY + this.element.offsetHeight;
+    const hastatiLeftEdge = hastati.positionX;
+    const hastatiRightEdge = hastati.positionX + hastati.element.offsetWidth;
+    const hastatiTopEdge = hastati.positionY;
+    const hastatiButtomEdge = hastati.positionY + hastati.element.offsetHeight;
+    if(
+        playerLeftEdge < enemyRightEdge && 
+        playerRightEdge > enemyLeftEdge &&
+        playerTopEdge < enemyButtomEdge &&
+        playerButtomEdge > enemyTopEdge
+    ){
+        console.log("Collision detected");
+        enemy.disappear();
+        shakeGameArea();
+        game.lives --;
+        livesElement.innerText = "❤️".repeat(game.lives);
+    }
+});*/

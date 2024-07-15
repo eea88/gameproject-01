@@ -1,14 +1,22 @@
 
-console.log(hastatiContainer.postionY);
-console.log(battlePosition);
+//console.log(hastatiContainer.postionY);
+//console.log(battlePosition);
 class Enemy{
-    constructor(){
+    constructor(level){
         this.createEnemyElement();
         //this metod creates the enemey which we need ot set the position
         this.positionX= Math.floor(Math.random()*(gameArea.offsetWidth-this.element.offsetWidth)) 
         this.positionY= gameArea.offsetHeight- this.element.offsetHeight;
         this.updateElementPosition();
-        this.velocity = 2;
+        this.velocity = 1;
+        this.health = 90 + (level*2);
+        this.stamina = 50 + (level*3);
+        this.attack = 10 + level;
+        this.strength = 10 + level;
+        this.defense = 8 +(level/2);
+        this.agility = 8 +(level/4);
+        this.level = level;
+        this.experience = 0;
         
         //other stats go here
         
@@ -25,7 +33,9 @@ class Enemy{
     move(){
         setTimeout(()=>{
         if(this.positionY>battlePosition){this.positionY-= this.velocity;
-        this.updateElementPosition()}else{warriorAttack()}
+        this.updateElementPosition()}else{warriorAttack();
+            console.log(this.positionX);
+        }
         },300);
     }
     setBoundaries(){
@@ -46,14 +56,14 @@ class Enemy{
 
 
     for (let i = 0; i < 5; i++) { // Create 5 basic enemies
-        game.enemies.push(new Enemy());
+        game.enemies.push(new Enemy(1));
     }
     setInterval(() =>{
-        game.enemies.push(new Enemy());
+        game.enemies.push(new Enemy(1));
         console.log(game.enemies);
         
         
-        },2000);
+        },10000);
 
 //setInterval (() =>{
     

@@ -80,7 +80,7 @@ body{
     margin-top: -6px;
     margin-bottom: -6px;
     object-fit: none;
-    background-image: url(Images/Knight_cropped.png);
+    background-image: url(./images/Knight_cropped.png);
     background-size: cover;
     z-index: 1;
     

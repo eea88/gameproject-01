@@ -17,18 +17,25 @@ const triariiContainer = {
 }
 
 class Soldier {
-    constructor() {
+    constructor(level) {
 
         this.positionY = 0
-        this.positionX = currentXPosition; // Use the currentXPosition to set the initial position
-        this.positionY = 0; // Manage vertical position if needed
+        this.positionX = currentXPosition // Use the currentXPosition to set the initial position
+        this.positionY = 0 // Manage vertical position if needed
         // stats will need to go here
-        
+        this.health = 90 + (level*2);
+        this.stamina = 50 + (level*3);
+        this.attack = 10 + level;
+        this.strength = 10 + level;
+        this.defense = 8 +(level/2);
+        this.agility = 8 +(level/4);
+        this.level = level;
+        this.experience = 0;
     }
 }
 class Hastati extends Soldier {
-    constructor() {
-        super();
+    constructor(level) {
+        super(level);
         this.createHastatiElement();
     }
 
@@ -53,9 +60,12 @@ class Hastati extends Soldier {
 }
 
 class Principes extends Soldier {
-    constructor() { //will add stats later//
-        super() // will add stats later
+    constructor(level,armor) { //will add stats later//
+        super(level) // will add stats later
         this.createPrincipesElement();
+        this.armor = armor + level;
+        this.attack = 10 + level*2;
+        this.strength = 10 + level*2;
     }
     createPrincipesElement() {
         this.element = document.createElement("div");
@@ -76,8 +86,14 @@ class Principes extends Soldier {
 
 }
 class Triarii extends Soldier {
-    constructor() { //will add stats later//
-        super() // will add stats later
+    constructor(level,armor) { //will add stats later//
+        super(level)
+        this.armor = (armor*level);
+        this.attack = 15;
+        this.stamina = 150 + (level*3);
+        this.attack = 10 + level*2;
+        this.strength = 10 + level*2;
+         // will add stats later
         this.createTriariiElement();
     }
     createTriariiElement() {
@@ -103,21 +119,21 @@ class Triarii extends Soldier {
 
 //Initial Setup
 for (let i = 0; i < 20; i++) { // Create 10 hastati
-    game.hastati.push(new Hastati());
+    game.soldiers.push(new Hastati(1));
 }
 for (let i = 0; i < 20; i++) { // Create 10 principes
-    game.principes.push(new Principes());
+    game.soldiers.push(new Principes(2));
 }
 for (let i = 0; i < 20; i++) { // Create 10 principes
-    game.triarii.push(new Triarii());
+    game.soldiers.push(new Triarii(3));
 }
 
-game.hastati.push(new Hastati())
-game.hastati.push(new Principes())
-game.triarii.push(new Triarii())
-game.triarii.push(new Triarii())
-game.triarii.push(new Triarii())
-game.triarii.push(new Triarii())
+game.soldiers.push(new Hastati(1))
+game.soldiers.push(new Principes(2))
+game.soldiers.push(new Triarii(3))
+game.soldiers.push(new Triarii(5))
+game.soldiers.push(new Triarii(5))
+game.soldiers.push(new Triarii(3))
 
 //Rotation
 let command = "";

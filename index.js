@@ -1,4 +1,4 @@
-console.log("INDEX JS RUNNING");
+//console.log("INDEX JS RUNNING");
 const game = {
     score:0,
     enemies: [],
@@ -25,20 +25,29 @@ function playGame(){
 
 window.requestAnimationFrame(playGame)
 
-function warriorAttack(){
-    setTimeout(()=>{
+const gridWidth = gameArea.offsetWidth/25;
+const gridLength = gameArea.offsetHeight/25;
 
-
-
-
-
-    
-    ;},1000)
+console.log (gridWidth);
+console.log (gridLength);
+/* Tried to guild a Grid to make enemies move in order and not overlap but after a walk switched to filtered array. Commenting this part out for now
+function createGrid(top,left){
+    this.element = document.createElement("div");
+    this.element.className = "grid";
+    gameArea.appendChild(this.element);
+    this.element.top= top;
+    this.element.left = left;
 }
+//Create the game setup for the enemies too move in order
+//for (let i = 0; i < 10 ;  i * 25) { 
+  //      createGrid(i,0);
+//};
+createGrid(25,25);
+*/
 
-function attackRange(){
+//function attackRange(){
     
-}
+//}
 /*checkCollisions(){
     game.hastati.forEach((hastati)=>{
     const hastatiLeftEdge = this.positionX;
@@ -59,6 +68,5 @@ function attackRange(){
         enemy.disappear();
         shakeGameArea();
         game.lives --;
-        livesElement.innerText = "❤️".repeat(game.lives);
     }
 });*/

@@ -30,13 +30,49 @@ class Enemy{
         this.element.style.left = `${this.positionX}px`;
         this.element.style.top = `${this.positionY}px`;
     }
+    freeze(){
+        const orcInFront = game.enemies.filter((eachEnemy)=>{
+            return (
+               +eachEnemy.positionY < (this.positionY+25) && 
+                eachEnemy !== this);
+        })
+        const orcInParallel = game.enemies.filter((eachEnemy)=>{
+            return (
+                +eachEnemy.positionX < (this.positionX + 25) && 
+                +eachEnemy.positionX > (this.positionX - 25) &&
+                eachEnemy !== this
+            );
+        })
+        
+        if(orcInFront.length >0  && orcInParallel.length>0){
+            console.log("Orc froze");
+            return true; //Orc should freeze
+        }else {
+            
+            return false; // Orc should not freeze
+        }
+
+    }
     move(){
         setTimeout(()=>{
-        if(this.positionY>battlePosition){this.positionY-= this.velocity;
-        this.updateElementPosition()}else{warriorAttack();
-            console.log(this.positionX);
-        }
-        },300);
+        if(!this.freeze()){
+            if(this.positionY>battlePosition){
+            this.positionY-= this.velocity;
+        this.updateElementPosition()}
+    else{
+        //this.orcAttack();
+            console.log(this.positionX+" "+this.positionY);
+            return(this.positionX);}
+        }}
+        ,300);
+    }}
+    /*orcAttack(){
+        setTimeout(()=>{
+    let orcVictim = game.soldiers[0]; // temporariliy while we figure out the victim
+            if (this.attack > orcVictim.defense) {
+                return this.strength;
+            } else console.log("attacked blocked");//future{blockAttack};
+    },1000)
     }
     setBoundaries(){
         if(this.positionX <=0){
@@ -53,7 +89,7 @@ class Enemy{
         }
     }
 }
-
+*/
 
     for (let i = 0; i < 5; i++) { // Create 5 basic enemies
         game.enemies.push(new Enemy(1));
@@ -63,7 +99,7 @@ class Enemy{
         console.log(game.enemies);
         
         
-        },10000);
+        },1000);
 
 //setInterval (() =>{
     

@@ -79,10 +79,21 @@ body{
     left: 350;
     margin-top: -6px;
     margin-bottom: -6px;
-    margin-left: -14px;
-    margin-right: -20px;
-    background-image: url(Images/Knight_InFront.png);
+    object-fit: none;
+    background-image: url(Images/Knight_cropped.png);
     background-size: cover;
     z-index: 1;
     
+}
+
+.basic-enemy{
+    
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    margin: 1px;
+    top: 0;
+    left: 0;
+    background-color: green;
+    z-index: 4;
 }

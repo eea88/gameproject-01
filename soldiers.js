@@ -23,6 +23,7 @@ class Soldier {
         this.positionX = currentXPosition; // Use the currentXPosition to set the initial position
         this.positionY = 0; // Manage vertical position if needed
         // stats will need to go here
+        
     }
 }
 class Hastati extends Soldier {
@@ -120,22 +121,26 @@ game.triarii.push(new Triarii())
 
 //Rotation
 let command = "";
+let battlePosition = 220;
+let stepsBack = 10;
 document.addEventListener("keydown", (event) => {
     //console.log("You have pressed the key: ", event.key);
     command = (event.key);
     console.log(command);
-    let stepsBack = 10;
+    
     if (command === " ") {
 
         if (hastatiContainer.position === "bottom") {
             hastatiContainerElement.style.zIndex = "1";
-            hastatiContainerElement.style.top = (70 - stepsBack) + "px";
+            hastatiContainerElement.style.top = 70 - stepsBack + "px";
             principesContainerElement.style.zIndex = "3";
             triariiContainerElement.style.zIndex = "2";
-            stepsBack += 10;
+            battlePosition -= stepsBack;
+            if(stepsBack<50){stepsBack += 10}else{stepsBack=50, battlePosition=160};
             principesContainer.position = "bottom";
             triariiContainer.position = "middle";
             hastatiContainer.position = "top";
+            
             setTimeout(() => {
                 principesContainerElement.style.top = (170 - stepsBack) + "px"
             }, 300);
@@ -148,7 +153,8 @@ document.addEventListener("keydown", (event) => {
             principesContainerElement.style.top = (70 - stepsBack) + "px";
             hastatiContainerElement.style.zIndex = "2";
             triariiContainerElement.style.zIndex = "3";
-            stepsBack += 10;
+            battlePosition -= stepsBack;
+            if(stepsBack<50){stepsBack += 10}else{stepsBack=50, battlePosition=160};
             principesContainer.position = "top";
             triariiContainer.position = "bottom";
             hastatiContainer.position = "middle";
@@ -164,7 +170,8 @@ document.addEventListener("keydown", (event) => {
             triariiContainerElement.style.top = (70 - stepsBack) + "px";
             hastatiContainerElement.style.zIndex = "3";
             principesContainerElement.style.zIndex = "2";
-            stepsBack += 10;
+            battlePosition -= stepsBack;
+            if(stepsBack<50){stepsBack += 10}else{stepsBack=50, battlePosition=160};
             principesContainer.position = "middle";
             triariiContainer.position = "top";
             hastatiContainer.position = "bottom";
@@ -177,7 +184,4 @@ document.addEventListener("keydown", (event) => {
         }
     }
 });
-
-
-
 

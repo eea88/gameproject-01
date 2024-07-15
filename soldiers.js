@@ -149,6 +149,15 @@ document.addEventListener("keydown", (event) => {
             hastatiContainerElement.style.zIndex = "2";
             triariiContainerElement.style.zIndex = "3";
             stepsBack += 10;
+            principesContainer.position = "top";
+            triariiContainer.position = "bottom";
+            hastatiContainer.position = "middle";
+            setTimeout(() => {
+                triariiContainerElement.style.top = (170 - stepsBack) + "px"
+            }, 300);
+
+            setTimeout(()=>{
+                hastatiContainerElement.style.top = (120 - stepsBack) + "px"}, 700);
         }
         else if (triariiContainer.position === "bottom") {
             triariiContainerElement.style.zIndex = "1";
@@ -156,6 +165,15 @@ document.addEventListener("keydown", (event) => {
             hastatiContainerElement.style.zIndex = "3";
             principesContainerElement.style.zIndex = "2";
             stepsBack += 10;
+            principesContainer.position = "middle";
+            triariiContainer.position = "top";
+            hastatiContainer.position = "bottom";
+            setTimeout(() => {
+                hastatiContainerElement.style.top = (170 - stepsBack) + "px"
+            }, 300);
+
+            setTimeout(()=>{
+                principesContainerElement.style.top = (120 - stepsBack) + "px"}, 700);
         }
     }
 });

@@ -50,3 +50,4 @@ Backlog:
   - Add Ranged Enemies & Ranged Defense
 - Add Ranged Attack
 
+[Deployed version](https://eea88.github.io/gameproject-01/)

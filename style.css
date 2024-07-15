@@ -3,3 +3,86 @@
     padding:0;
     box-sizing: border-box;
 }
+body{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-area{
+    width:70%;
+    height: 80%;
+    background-color: black;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#hastatiContainer{
+    top: 170px;
+    position: absolute;
+    border: 1px solid red;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    height: 56px;
+    width:95%;
+    z-index: 3;
+}
+
+.hastati{
+    width: 50px;
+    height: 50px;
+    margin-left: 1px;
+    margin-right: 1px;
+    background-color: pink;
+}
+#principesContainer{
+    top: 120px;
+    position: absolute;
+    border: 1px solid red;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    height: 56px;
+    width:95%;
+    z-index: 2;
+}
+
+.principes{
+    width: 50px;
+    height: 50px;
+    top: 0;
+    left: 350;
+    margin-left: 1px;
+    margin-right: 1px;
+    background-color: rgb(243, 239, 241);
+}
+#triariiContainer{
+    top: 70px;
+    position: absolute;
+    border: 1px solid red;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    height: 56px;
+    width:95%;
+}
+
+.triarii{
+    width: 56px;
+    height: 56px;
+    top: 0;
+    left: 350;
+    margin-top: -6px;
+    margin-bottom: -6px;
+    margin-left: -14px;
+    margin-right: -20px;
+    background-image: url(Images/Knight_InFront.png);
+    background-size: cover;
+    z-index: 1;
+    
+}

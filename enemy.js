@@ -136,7 +136,7 @@ class Enemy{
             else {
                 //this.orcAttack();
                 //console.log(this.positionX+" "+this.positionY);
-               let thisPositionX= Number(this.positionX);
+                let thisPositionX= Number(this.positionX);
                 let thisGridArea; 
                 if(thisPositionX < gridLeft){
                     thisGridArea = "Left";}
@@ -149,19 +149,19 @@ class Enemy{
                     case "Left":
                         if(!game.enemiesBattleLeft.includes(this)){
                             game.enemiesBattleLeft.push(this);
-                        console.log(game.enemiesBattleLeft);
+                        //console.log(game.enemiesBattleLeft);
                         };
                         break;
                     case "Center":
                         if(!game.enemiesBattleCenter.includes(this)){
                             game.enemiesBattleCenter.push(this);
-                        console.log(game.enemiesBattleCenter);
+                        //console.log(game.enemiesBattleCenter);
                         };
                         break;
                     default:
                         if(!game.enemiesBattleRight.includes(this)){
                             game.enemiesBattleRight.push(this);
-                            console.log(game.enemiesBattleRight);
+                            //console.log(game.enemiesBattleRight);
                             };
                         }                           
 
@@ -209,7 +209,7 @@ class Enemy{
         //console.log(game.enemies);
         
         
-        },5000);
+        },10000);
 
 //setInterval (() =>{
     

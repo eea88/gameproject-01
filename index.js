@@ -22,6 +22,9 @@ function playGame(){
     game.enemies.forEach((enemy)=>{
         enemy.move();
     });
+    game.soldiers.forEach((soldier)=>{
+        soldier.checkCollisions();
+    })
     
     window.requestAnimationFrame(playGame)
     

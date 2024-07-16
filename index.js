@@ -6,11 +6,11 @@ const game = {
     deadEnemies:[],
     deadSoldiers:[],
     enemiesBattleLeft: [],
-    soldiersBattleLeft: [],
+    soldiersHastati: [],
     enemiesBattleRight: [],
-    soldiersBattleRight: [],
+    soldiersPrincipes: [],
     enemiesBattleCenter: [],
-    soldiersBattleCenter: [],
+    soldiersTriarii: [],
 }
 
 const gameArea = document.querySelector("#game-area");
@@ -19,8 +19,9 @@ let frames = 0;
 let score = 0;
 let frameCounter = 0;
 function playGame(){
-    frames++
-    if (frameCounter % 30 === 0) { // Execute game logic every 30 frames
+    frames++;
+    frameCounter++;
+    if (frameCounter % 10 === 0) { // Execute game logic every 10 frames
 
     game.enemies.forEach((enemy)=>{
         enemy.move();
@@ -28,6 +29,8 @@ function playGame(){
     game.soldiers.forEach((soldier)=>{
         soldier.checkCollisions();
     })
+    if(frameCounter%500 === 0){
+    console.log(frameCounter)};
 }
     window.requestAnimationFrame(playGame)  
 
@@ -43,8 +46,8 @@ const gridLeft = gameArea.offsetWidth/3;
 const gridCenter = gameArea.offsetWidth/3 * 2;
 const gridRight = gameArea.offsetWidth;
 
-//console.log (gridWidth);
-//console.log (gridLength);
+//console.log (gridWidth*25);
+//console.log (gridLength*25);
 /* Tried to guild a Grid to make enemies move in order and not overlap but after a walk switched to filtered array. Commenting this part out for now
 function createGrid(top,left){
     this.element = document.createElement("div");

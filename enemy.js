@@ -12,7 +12,7 @@ class Enemy{
             this.positionY = gameArea.offsetHeight - this.element.offsetHeight;
             this.updateElementPosition();
           } while (this.checkOrcCollisions());
-        this.velocity = 1;
+        this.velocity = 10;
         this.health = 90 + (level*2);
         this.stamina = 50 + (level*3);
         this.attack = 10 + level;

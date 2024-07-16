@@ -58,9 +58,7 @@ class Soldier {
             soldierEdges.right > enemyEdges.left
           ) {
             isColliding = true;
-            //console.log("Collision with the enemy!");
-            this.soldierAttack(enemy);
-            enemy.orcAttack(this);
+            console.log("Collision with the enemy!");
             this.soldierAttack(enemy);
             enemy.orcAttack(this);
         }
@@ -96,8 +94,6 @@ class Soldier {
     }
     }
     
-    
-    
 
 class Hastati extends Soldier {
     constructor(level) {
@@ -110,7 +106,6 @@ class Hastati extends Soldier {
         this.element = document.createElement("div");
         this.element.className = "hastati";
         currentXPosition += 56; // Increment the horizontal position for the next soldier
-        this.yAxis=170;
         this.updateElementPosition();
         hastatiContainerElement.appendChild(this.element);
         hastatiContainerElement.style.alignItems = 'center';
@@ -128,18 +123,17 @@ class Hastati extends Soldier {
 
 class Principes extends Soldier {
     constructor(level, armor) { //will add stats later//
-        super(level) // will add stats later
-        this.createPrincipesElement();
+        super(level); // will add stats later
         this.armor = armor + level;
         this.attack = 10 + level * 2;
         this.strength = 10 + level * 2;
+        this.createPrincipesElement();
 
     }
     createPrincipesElement() {
         this.element = document.createElement("div");
         this.element.className = "principes";
         currentXPosition += 56; // Increment the horizontal position for the next soldier
-        this.yAxis=120;
         this.updateElementPosition();
         principesContainerElement.appendChild(this.element);
         principesContainerElement.style.alignItems = 'center';
@@ -149,21 +143,17 @@ class Principes extends Soldier {
         this.element.style.left = `${this.positionX}px`;
         this.element.style.top = `${this.positionY}px`;
     }
-    /* moveContainer(){
-        //we will need to add movement of the line here
-    }*/
+    
 
 }
 class Triarii extends Soldier {
     constructor(level, armor) { //will add stats later//
-        super(level)
+        super(level);
         this.armor = (armor * level);
         this.attack = 15;
         this.stamina = 150 + (level * 3);
         this.attack = 10 + level * 2;
         this.strength = 10 + level * 2;
-
-        // will add stats later
         this.createTriariiElement();
     }
     createTriariiElement() {
@@ -267,22 +257,34 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
-//Initial Setup
-for (let i = 0; i < 20; i++) { // Create 10 hastati
-    game.soldiers.push(new Hastati(1));
+// Initial Setup
+for (let i = 0; i < 20; i++) { // Create 20 hastati
+    const hastati = new Hastati(1);
+    game.soldiers.push(hastati);
+    game.soldiersHastati.push(hastati);
 }
-for (let i = 0; i < 20; i++) { // Create 10 principes
-    game.soldiers.push(new Principes(2));
+for (let i = 0; i < 20; i++) { // Create 20 principes
+    const principes = new Principes(2);
+    game.soldiers.push(principes);
+    game.soldiersPrincipes.push(principes);
 }
-for (let i = 0; i < 20; i++) { // Create 10 principes
-    game.soldiers.push(new Triarii(3));
+for (let i = 0; i < 20; i++) { // Create 20 triarii
+    const triarii = new Triarii(3);
+    game.soldiers.push(triarii);
+    game.soldiersTriarii.push(triarii);
+}
+for (let i = 0; i < 2; i++) { // Create 2 triarii
+    const triarii = new Triarii(5);
+    game.soldiers.push(triarii);
+    game.soldiersTriarii.push(triarii);
 }
 
+console.log(game.soldiers);
+console.log(game.soldiersHastati);
+console.log(game.soldiersPrincipes);
+console.log(game.soldiersTriarii);
 
-game.soldiers.push(new Triarii(3))
-game.soldiers.push(new Triarii(5))
-game.soldiers.push(new Triarii(5))
-game.soldiers.push(new Triarii(3))
+
 /* 
 const hastatiArrayLeft = game.soldiers.slice (7);
 const hastatiArrayCenter = game.soldiers.slice(7,14);

@@ -21,6 +21,7 @@ class Enemy{
         //other stats go here
         
     }
+    
     createEnemyElement(){
         this.element = document.createElement("div");
         this.element.className = "basic-enemy";
@@ -30,10 +31,39 @@ class Enemy{
         this.element.style.left = `${this.positionX}px`;
         this.element.style.top = `${this.positionY}px`;
     }
-    freeze(){
+    checkOrcCollisions(){
+        let isColliding = false;
+        const orcNotMe = game.enemies.filter((eachEnemy)=>{
+            return (
+                eachEnemy !== this);})
+
+    orcNotMe.forEach((enemy)=>{
+    const thisLeftEdge = this.positionX;
+    const thisRightEdge = this.positionX + this.element.offsetWidth;
+    const thisTopEdge = this.positionY;
+    const thisButtomEdge = this.positionY + this.element.offsetHeight;
+    const enemyLeftEdge = enemy.positionX;
+    const enemyRightEdge = enemy.positionX + enemy.element.offsetWidth;
+    const enemyTopEdge = enemy.positionY;
+    const enemyButtomEdge = enemy.positionY + enemy.element.offsetHeight;
+    if(
+        thisLeftEdge < enemyRightEdge && 
+        thisRightEdge > enemyLeftEdge &&
+        thisTopEdge < enemyButtomEdge &&
+        thisButtomEdge > enemyTopEdge
+    ){
+        console.log("Collision detected");
+        isColliding = true;
+        return
+        //enemy.disappear();
+        //shakeGameArea();
+        //game.lives --;
+    }
+    }); return isColliding;}
+    /*freeze(){
         const orcInFront = game.enemies.filter((eachEnemy)=>{
             return (
-               +eachEnemy.positionY < (this.positionY+25) && 
+               +eachEnemy.positionY < (this.positionY+5) && 
                 eachEnemy !== this);
         })
         const orcInParallel = game.enemies.filter((eachEnemy)=>{
@@ -52,20 +82,22 @@ class Enemy{
             return false; // Orc should not freeze
         }
 
-    }
+    }*/
     move(){
-        setTimeout(()=>{
-        if(!this.freeze()){
+            console.log(this.checkOrcCollisions());
+        if(!this.checkOrcCollisions()){
             if(this.positionY>battlePosition){
-            this.positionY-= this.velocity;
-        this.updateElementPosition()}
-    else{
-        //this.orcAttack();
+                this.positionY-= this.velocity;
+                this.updateElementPosition()
+            }
+                else{
+            //this.orcAttack();
             console.log(this.positionX+" "+this.positionY);
             return(this.positionX);}
+        }else{
+            
         }}
-        ,300);
-    }}
+    }
     /*orcAttack(){
         setTimeout(()=>{
     let orcVictim = game.soldiers[0]; // temporariliy while we figure out the victim

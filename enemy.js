@@ -134,7 +134,7 @@ class Enemy{
                 this.updateElementPosition()
             }
             else {
-                //this.orcAttack();
+                
                 //console.log(this.positionX+" "+this.positionY);
                 let thisPositionX= Number(this.positionX);
                 let thisGridArea; 
@@ -173,8 +173,36 @@ class Enemy{
                 //},10000*Math.random());
           
         }}
-    
+    orcAttack(soldier){
+        setTimeout(() => {
+        let diceThrowAttacker= Math.floor(Math.random() * 12) + 1;
+        let diceThrowDefender = Math.floor(Math.random() * 12) + 1;
+        
+        if(this.attack * diceThrowAttacker > soldier.defense * diceThrowDefender){
+            soldier.receivesDamage(this.strength);
+            console.log("Orc hit you!");
+        } else{
+            ;
+        }
+    },1000);
     }
+    receivesDamage(amount){
+        this.health -= amount;
+        //console.log(this.health);
+        if(this.health <=0){this.orcDied()}
+    }
+    orcDied(){
+        const index = game.enemies.indexOf(this);
+        game.score += this.level;
+        game.deadEnemies.push(this),
+        game.enemies.splice(index,1);
+        if(this.element)
+            {this.element.remove()
+            };
+        console.log(`${game.score} SCORE!` );
+    }
+    }
+    
 
     /*orcAttack(){
         setTimeout(()=>{
@@ -209,7 +237,7 @@ class Enemy{
         //console.log(game.enemies);
         
         
-        },10000);
+        },1000);
 
 //setInterval (() =>{
     

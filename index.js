@@ -3,6 +3,8 @@ const game = {
     score:0,
     enemies: [],
     soldiers: [],
+    deadEnemies:[],
+    deadSoldiers:[],
     enemiesBattleLeft: [],
     soldiersBattleLeft: [],
     enemiesBattleRight: [],
@@ -14,20 +16,20 @@ const game = {
 const gameArea = document.querySelector("#game-area");
 
 let frames = 0;
-
-
+let score = 0;
+let frameCounter = 0;
 function playGame(){
     frames++
-    
+    if (frameCounter % 30 === 0) { // Execute game logic every 30 frames
+
     game.enemies.forEach((enemy)=>{
         enemy.move();
     });
     game.soldiers.forEach((soldier)=>{
         soldier.checkCollisions();
     })
-    
-    window.requestAnimationFrame(playGame)
-    
+}
+    window.requestAnimationFrame(playGame)  
 
 
 }

@@ -58,12 +58,43 @@ class Soldier {
             soldierEdges.right > enemyEdges.left
           ) {
             isColliding = true;
-            console.log("Collision with the enemy!");
-          }
+            //console.log("Collision with the enemy!");
+            this.soldierAttack(enemy);
+            enemy.orcAttack(this);
+            this.soldierAttack(enemy);
+            enemy.orcAttack(this);
+        }
         });
-    
+            
         return isColliding;
-      }        }
+
+      }        
+    soldierAttack(enemy){
+        setTimeout(() => {
+        let diceThrowAttacker = Math.floor(Math.random() * 12) + 1;
+        let diceThrowDefender = Math.floor(Math.random() * 12) + 1;
+            if(this.attack * diceThrowAttacker > enemy.defense * diceThrowDefender){
+            enemy.receivesDamage(this.strength);
+            console.log("attack successful");
+        } else{
+            ;
+        }
+        },1000);
+    }
+    receivesDamage(amount){
+        this.health -= amount;
+        //console.log(this.health);
+        if(this.health <=0){this.soldierDied()}
+    }
+    soldierDied(){
+        
+        const index = game.soldiers.indexOf(this);
+        game.deadSoldiers.push(this),
+        game.soldiers.splice(index,1);
+        if(this.element){this.element.remove()};
+        console.log("Soldier died");
+    }
+    }
     
     
     

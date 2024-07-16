@@ -5,9 +5,13 @@ class Enemy{
     constructor(level){
         this.createEnemyElement();
         //this metod creates the enemey which we need ot set the position
-        this.positionX= Math.floor(Math.random()*(gameArea.offsetWidth-this.element.offsetWidth)) 
-        this.positionY= gameArea.offsetHeight- this.element.offsetHeight;
-        this.updateElementPosition();
+        do {
+            this.positionX = Math.floor(
+              Math.random() * (gameArea.offsetWidth - this.element.offsetWidth)
+            );
+            this.positionY = gameArea.offsetHeight - this.element.offsetHeight;
+            this.updateElementPosition();
+          } while (this.checkOrcCollisions());
         this.velocity = 1;
         this.health = 90 + (level*2);
         this.stamina = 50 + (level*3);
@@ -36,30 +40,69 @@ class Enemy{
         const orcNotMe = game.enemies.filter((eachEnemy)=>{
             return (
                 eachEnemy !== this);})
-
-    orcNotMe.forEach((enemy)=>{
+                orcNotMe.forEach((enemy) => {
+                    const thisLeftEdge = this.positionX;
+                    const thisRightEdge = this.positionX + this.element.offsetWidth/2;
+                    const thisTopEdge = this.positionY;
+                    const thisButtomEdge = this.positionY + this.element.offsetHeight/2;
+                    const enemyLeftEdge = enemy.positionX;
+                    const enemyRightEdge = enemy.positionX + enemy.element.offsetWidth/2;
+                    const enemyTopEdge = enemy.positionY;
+                    const enemyButtomEdge = enemy.positionY + enemy.element.offsetHeight/2;
+              
+                    if (
+                      thisButtomEdge > enemyTopEdge &&
+                      thisTopEdge < enemyButtomEdge &&
+                      thisLeftEdge < enemyRightEdge &&
+                      thisRightEdge > enemyLeftEdge
+                    ) {
+                      // we have a collision, but we need to know where it is
+                      isColliding = true;
+                      if (thisButtomEdge > enemyTopEdge) {
+                        //console.log("Collision in the front");
+                        this.positionY = enemyButtomEdge + 1; // move the enemy down until it is not colliding
+                        
+                        return;
+                        //enemy.disappear();
+                        //shakeGameArea();
+                        //game.lives --;
+                      } else if (thisTopEdge < enemyButtomEdge) {
+                          //console.log("Collision detected in the back");
+                        return;
+                      } else if (
+                        thisLeftEdge < enemyRightEdge &&
+                        thisRightEdge > enemyLeftEdge
+                      ) {
+                        //console.log("lateral collision detected");
+                        return;
+                      }
+                    }
+                  });
+                  return isColliding;
+                }
+    /* orcNotMe.forEach((enemy)=>{
     const thisLeftEdge = this.positionX;
-    const thisRightEdge = this.positionX + this.element.offsetWidth;
+    const thisRightEdge = this.positionX + this.element.offsetWidth/2;
     const thisTopEdge = this.positionY;
-    const thisButtomEdge = this.positionY + this.element.offsetHeight;
+    const thisButtomEdge = this.positionY + this.element.offsetHeight/2;
     const enemyLeftEdge = enemy.positionX;
-    const enemyRightEdge = enemy.positionX + enemy.element.offsetWidth;
+    const enemyRightEdge = enemy.positionX + enemy.element.offsetWidth/2;
     const enemyTopEdge = enemy.positionY;
-    const enemyButtomEdge = enemy.positionY + enemy.element.offsetHeight;
+    const enemyButtomEdge = enemy.positionY + enemy.element.offsetHeight/2;
     if(
         thisLeftEdge < enemyRightEdge && 
         thisRightEdge > enemyLeftEdge &&
         thisTopEdge < enemyButtomEdge &&
         thisButtomEdge > enemyTopEdge
     ){
-        console.log("Collision detected");
+        //console.log("Collision detected");
         isColliding = true;
         return
         //enemy.disappear();
         //shakeGameArea();
         //game.lives --;
     }
-    }); return isColliding;}
+    }); return isColliding;} */
     /*freeze(){
         const orcInFront = game.enemies.filter((eachEnemy)=>{
             return (
@@ -84,20 +127,55 @@ class Enemy{
 
     }*/
     move(){
-            console.log(this.checkOrcCollisions());
+            //console.log(this.checkOrcCollisions());
         if(!this.checkOrcCollisions()){
-            if(this.positionY>battlePosition){
-                this.positionY-= this.velocity;
+            if(this.positionY > battlePosition ) {
+                this.positionY -= this.velocity;
                 this.updateElementPosition()
             }
-                else{
-            //this.orcAttack();
-            console.log(this.positionX+" "+this.positionY);
-            return(this.positionX);}
-        }else{
-            
+            else {
+                //this.orcAttack();
+                //console.log(this.positionX+" "+this.positionY);
+               let thisPositionX= Number(this.positionX);
+                let thisGridArea; 
+                if(thisPositionX < gridLeft){
+                    thisGridArea = "Left";}
+                else if(thisPositionX < gridCenter){
+                    thisGridArea = "Center";} 
+                else{ 
+                    thisGridArea = "Right";}
+                //switch statement used to handle grid assignments by X position.
+                switch(thisGridArea){
+                    case "Left":
+                        if(!game.enemiesBattleLeft.includes(this)){
+                            game.enemiesBattleLeft.push(this);
+                        console.log(game.enemiesBattleLeft);
+                        };
+                        break;
+                    case "Center":
+                        if(!game.enemiesBattleCenter.includes(this)){
+                            game.enemiesBattleCenter.push(this);
+                        console.log(game.enemiesBattleCenter);
+                        };
+                        break;
+                    default:
+                        if(!game.enemiesBattleRight.includes(this)){
+                            game.enemiesBattleRight.push(this);
+                            console.log(game.enemiesBattleRight);
+                            };
+                        }                           
+
+            }
+        }
+            else{
+                //setTimeout(() => {
+                //this.move()
+                //},10000*Math.random());
+          
         }}
+    
     }
+
     /*orcAttack(){
         setTimeout(()=>{
     let orcVictim = game.soldiers[0]; // temporariliy while we figure out the victim
@@ -128,10 +206,10 @@ class Enemy{
     }
     setInterval(() =>{
         game.enemies.push(new Enemy(1));
-        console.log(game.enemies);
+        //console.log(game.enemies);
         
         
-        },1000);
+        },5000);
 
 //setInterval (() =>{
     

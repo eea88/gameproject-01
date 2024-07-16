@@ -31,6 +31,7 @@ class Soldier {
         this.agility = 8 +(level/4);
         this.level = level;
         this.experience = 0;
+        this.battleParticipant = true;
     }
 }
 class Hastati extends Soldier {
@@ -66,6 +67,7 @@ class Principes extends Soldier {
         this.armor = armor + level;
         this.attack = 10 + level*2;
         this.strength = 10 + level*2;
+        this.battleParticipant = false;
     }
     createPrincipesElement() {
         this.element = document.createElement("div");
@@ -93,6 +95,7 @@ class Triarii extends Soldier {
         this.stamina = 150 + (level*3);
         this.attack = 10 + level*2;
         this.strength = 10 + level*2;
+        this.battleParticipant = false;
          // will add stats later
         this.createTriariiElement();
     }
@@ -148,14 +151,17 @@ document.addEventListener("keydown", (event) => {
 
         if (hastatiContainer.position === "bottom") {
             hastatiContainerElement.style.zIndex = "1";
+            Hastati.battleParticipant = false;
             hastatiContainerElement.style.top = 70 - stepsBack + "px";
             principesContainerElement.style.zIndex = "3";
+            Principes.battleParticipant = true;
             triariiContainerElement.style.zIndex = "2";
             battlePosition -= stepsBack;
             if(stepsBack<50){stepsBack += 10}else{stepsBack=50, battlePosition=160};
             principesContainer.position = "bottom";
             triariiContainer.position = "middle";
             hastatiContainer.position = "top";
+            
             
             setTimeout(() => {
                 principesContainerElement.style.top = (170 - stepsBack) + "px"
@@ -166,9 +172,11 @@ document.addEventListener("keydown", (event) => {
         }
         else if (principesContainer.position === "bottom") {
             principesContainerElement.style.zIndex = "1";
+            Principes.battleParticipant = false;
             principesContainerElement.style.top = (70 - stepsBack) + "px";
             hastatiContainerElement.style.zIndex = "2";
             triariiContainerElement.style.zIndex = "3";
+            Triarii.battleParticipant = true;
             battlePosition -= stepsBack;
             if(stepsBack<50){stepsBack += 10}else{stepsBack=50, battlePosition=160};
             principesContainer.position = "top";
@@ -183,8 +191,10 @@ document.addEventListener("keydown", (event) => {
         }
         else if (triariiContainer.position === "bottom") {
             triariiContainerElement.style.zIndex = "1";
+            Triarii.battleParticipant = false;
             triariiContainerElement.style.top = (70 - stepsBack) + "px";
             hastatiContainerElement.style.zIndex = "3";
+            Hastati.battleParticipant = true;
             principesContainerElement.style.zIndex = "2";
             battlePosition -= stepsBack;
             if(stepsBack<50){stepsBack += 10}else{stepsBack=50, battlePosition=160};

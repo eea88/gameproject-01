@@ -3,6 +3,12 @@ const game = {
     score:0,
     enemies: [],
     soldiers: [],
+    enemiesBattleLeft: [],
+    soldiersBattleLeft: [],
+    enemiesBattleRight: [],
+    soldiersBattleRight: [],
+    enemiesBattleCenter: [],
+    soldiersBattleCenter: [],
 }
 
 const gameArea = document.querySelector("#game-area");
@@ -28,8 +34,12 @@ window.requestAnimationFrame(playGame)
 const gridWidth = gameArea.offsetWidth/25;
 const gridLength = gameArea.offsetHeight/25;
 
-console.log (gridWidth);
-console.log (gridLength);
+const gridLeft = gameArea.offsetWidth/3;
+const gridCenter = gameArea.offsetWidth/3 * 2;
+const gridRight = gameArea.offsetWidth;
+
+//console.log (gridWidth);
+//console.log (gridLength);
 /* Tried to guild a Grid to make enemies move in order and not overlap but after a walk switched to filtered array. Commenting this part out for now
 function createGrid(top,left){
     this.element = document.createElement("div");

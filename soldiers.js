@@ -58,7 +58,7 @@ class Soldier {
             soldierEdges.right > enemyEdges.left
           ) {
             isColliding = true;
-            console.log("Collision with the enemy!");
+            //console.log("Collision with the enemy!");
             this.soldierAttack(enemy);
             enemy.orcAttack(this);
             enemy.positionY += 100;
@@ -70,17 +70,17 @@ class Soldier {
 
       }        
     soldierAttack(enemy){
-        console.log("attackkkkkk");
-        setTimeout(() => {
+        //console.log("attackkkkkk");
+        
         let diceThrowAttacker = Math.floor(Math.random() * 12) + 1;
         let diceThrowDefender = Math.floor(Math.random() * 12) + 1;
             if(this.attack * diceThrowAttacker > enemy.defense * diceThrowDefender){
-            enemy.receivesDamage(this.strength);
+            enemy.receivesDamage(this.strength*diceThrowAttacker);
             //console.log("attack successful");
         } else{
             ;
         }
-        },1000);
+        
     }
     receivesDamage(amount){
         this.health -= amount;
@@ -89,11 +89,32 @@ class Soldier {
     }
     soldierDied(){
         
-        const index = game.soldiers.indexOf(this);
+        let indexSoldier = game.soldiers.indexOf(this);
         game.deadSoldiers.push(this),
-        game.soldiers.splice(index,1);
-        if(this.element){this.element.remove()};
-        console.log("Soldier died");
+        game.soldiers.splice(indexSoldier,1);
+
+        
+            this.element.remove()
+        
+
+        let type = this.type;
+        console.log(`Soldier ${type} died`);
+        console.log(game.soldiers);
+
+        switch(type){
+            case "hastati":
+            let indexHastati = game.soldiersHastati.indexOf(this);
+            game.soldiersHastati.splice(indexHastati,1);
+            break;
+            case "principe":
+            let indexPrincipe = game.soldiersPrincipes.indexOf(this);
+            game.soldiersPrincipes.splice(indexPrincipe,1);
+            break;
+            case "triarii":
+                let indexTriarii = game.soldiersTriarii.indexOf(this);
+            game.soldiersTriarii.splice(indexTriarii,1);
+            break;
+        }
     }
     }
     
@@ -102,6 +123,7 @@ class Hastati extends Soldier {
     constructor(level) {
         super(level);
         this.createHastatiElement();
+        this.type= "hastati";
     }
 
 
@@ -130,6 +152,7 @@ class Principes extends Soldier {
         this.armor = armor + level;
         this.attack = 10 + level * 2;
         this.strength = 10 + level * 2;
+        this.type= "principe";
         this.createPrincipesElement();
 
     }
@@ -157,6 +180,7 @@ class Triarii extends Soldier {
         this.stamina = 150 + (level * 3);
         this.attack = 10 + level * 2;
         this.strength = 10 + level * 2;
+        this.type= "triarii";
         this.createTriariiElement();
     }
     createTriariiElement() {

@@ -14,7 +14,9 @@ body{
 #game-area{
     width:70%;
     height: 80%;
-    background-color: black;
+    background-image:url(./images/BG_0000s_0000_31916.png); 
+    background-size: contain;
+    background-repeat: no-repeat;
     overflow: hidden;
     position: relative;
     display: flex;
@@ -34,11 +36,16 @@ body{
 }
 
 .hastati{
-    width: 50px;
+    min-width: 50px;
     height: 50px;
-    margin-left: 1px;
-    margin-right: 1px;
-    background-color: pink;
+    
+    object-fit: none;
+    object-position: center;
+    background-image: url(./images/hastati.png);
+    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+
 }
 #principesContainer{
     top: 120px;
@@ -53,13 +60,16 @@ body{
 }
 
 .principes{
-    width: 60px;
+    min-width: 60px;
     height: 50px;
     top: 0;
     left: 350;
-    margin-left: 1px;
-    margin-right: 1px;
-    background-color: rgb(243, 239, 241);
+    
+    object-fit: none;
+    offset-position: right;
+    background-image: url(./images/principes.png);
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 #triariiContainer{
     top: 70px;
@@ -73,7 +83,7 @@ body{
 }
 
 .triarii{
-    width: 56px;
+    width: 26px;
     height: 56px;
     top: 0;
     left: 350;
@@ -97,6 +107,97 @@ body{
     background-color: green;
     z-index: 4;
 }
+.enemy1{
+    
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    margin: 1px;
+    top: 0;
+    left: 0;
+    background-image: url(./images/orc1.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 4;
+}
+.enemy2{
+    
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    margin: 1px;
+    top: 0;
+    left: 0;
+    background-image: url(./images/orc2.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 4;
+}
+.enemy3{
+    
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    margin: 1px;
+    top: 0;
+    left: 0;
+    background-image: url(./images/orc3.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 4;
+}
+.enemy4{
+    
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    margin: 1px;
+    top: 0;
+    left: 0;
+    background-image: url(./images/orc4.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 4;
+}
+.enemy5{
+    
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    margin: 1px;
+    top: 0;
+    left: 0;
+    background-image: url(./images/orc5.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 4;
+}
+.enemy6{
+    
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    margin: 1px;
+    top: 0;
+    left: 0;
+    background-image: url(./images/orc6.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 4;
+}
+.enemy7{
+    
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    margin: 1px;
+    top: 0;
+    left: 0;
+    background-image: url(./images/orc7.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 4;
+}
 .grid{
     width : 25px;
     height:25px;
@@ -107,3 +208,36 @@ body{
     z-index:0;
     border: 1px solid red;
 }
+
+#game-over-screen {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(9, 102, 182, 0.456);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    z-index: 9;
+  }
+  
+  #game-over-container {
+    background-color: rgba(0, 0, 0, 0);
+    background-size: cover;
+    width: 50vw;
+    height: 50vh;
+    border: 10px solid brown;
+    border-radius: 13px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4em;
+  }
+  
+  #try-again-btn {
+    width: 40%;
+    cursor: pointer;
+    transition: 300ms;
+  }
+  

@@ -1,10 +1,12 @@
 
 //console.log(hastatiContainer.postionY);
 //console.log(battlePosition);
+const enemyClassesArray = ["enemy1","enemy2","enemy3","enemy4","enemy5","enemy6","enemy7"];
+
 class Enemy{
     constructor(level){
         this.createEnemyElement();
-        //this metod creates the enemey which we need ot set the position
+        //this metod creates the enemey which we need to set the position
        
         this.positionX = Math.floor(
           Math.random() * (gameArea.offsetWidth - this.element.offsetWidth)
@@ -27,7 +29,8 @@ class Enemy{
     
     createEnemyElement(){
         this.element = document.createElement("div");
-        this.element.className = "basic-enemy";
+        let randomClass = Math.floor(Math.random()*7+1);
+        this.element.className = enemyClassesArray[randomClass];
         gameArea.appendChild(this.element);
     }
     updateElementPosition(){
@@ -173,17 +176,17 @@ class Enemy{
           
         }}
     orcAttack(soldier){
-        setTimeout(() => {
+        
         let diceThrowAttacker= Math.floor(Math.random() * 12) + 1;
         let diceThrowDefender = Math.floor(Math.random() * 12) + 1;
         
         if(this.attack * diceThrowAttacker > soldier.defense * diceThrowDefender){
-            soldier.receivesDamage(this.strength);
-            console.log("Orc hit you!");
+            soldier.receivesDamage(this.strength*diceThrowAttacker);
+            //console.log("Orc hit you!");
         } else{
             ;
         }
-    },1000);
+    
     }
     receivesDamage(amount){
         this.health -= amount;

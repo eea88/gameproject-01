@@ -61,6 +61,8 @@ class Soldier {
             console.log("Collision with the enemy!");
             this.soldierAttack(enemy);
             enemy.orcAttack(this);
+            enemy.positionY += 100;
+            enemy.updateElementPosition();
         }
         });
             
@@ -68,12 +70,13 @@ class Soldier {
 
       }        
     soldierAttack(enemy){
+        console.log("attackkkkkk");
         setTimeout(() => {
         let diceThrowAttacker = Math.floor(Math.random() * 12) + 1;
         let diceThrowDefender = Math.floor(Math.random() * 12) + 1;
             if(this.attack * diceThrowAttacker > enemy.defense * diceThrowDefender){
             enemy.receivesDamage(this.strength);
-            console.log("attack successful");
+            //console.log("attack successful");
         } else{
             ;
         }

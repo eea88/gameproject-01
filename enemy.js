@@ -5,13 +5,12 @@ class Enemy{
     constructor(level){
         this.createEnemyElement();
         //this metod creates the enemey which we need ot set the position
-        do {
-            this.positionX = Math.floor(
-              Math.random() * (gameArea.offsetWidth - this.element.offsetWidth)
-            );
-            this.positionY = gameArea.offsetHeight - this.element.offsetHeight;
-            this.updateElementPosition();
-          } while (this.checkOrcCollisions());
+       
+        this.positionX = Math.floor(
+          Math.random() * (gameArea.offsetWidth - this.element.offsetWidth)
+        );
+        this.positionY = gameArea.offsetHeight - this.element.offsetHeight;
+        this.updateElementPosition();
         this.velocity = 10;
         this.health = 90 + (level*2);
         this.stamina = 50 + (level*3);
@@ -229,16 +228,16 @@ class Enemy{
 }
 */
 
-    for (let i = 0; i < 5; i++) { // Create 5 basic enemies
+    for (let i = 0; i < 20 ; i++) { // Create 20 basic enemies
         game.enemies.push(new Enemy(1));
     }
-    setInterval(() =>{
+   /* setInterval(() =>{
         game.enemies.push(new Enemy(1));
         //console.log(game.enemies);
         
         
         },1000);
-
+*/
 //setInterval (() =>{
     
 //},10)

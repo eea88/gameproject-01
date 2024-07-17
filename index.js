@@ -30,7 +30,15 @@ function playGame(){
         soldier.checkCollisions();
     })
     if(frameCounter%500 === 0){
-    console.log(frameCounter)};
+   
+    if(game.enemies.length < 80){
+        for (let i = 0; i < 20 ; i++) { // Create 20 basic enemies
+            game.enemies.push(new Enemy(1));
+            console.log("New Enemy Wave")
+        }
+    }
+};
+    
 }
     window.requestAnimationFrame(playGame)  
 

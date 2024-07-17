@@ -20,13 +20,13 @@ class Enemy {
     );
     this.positionY = gameArea.offsetHeight - this.element.offsetHeight;
     this.updateElementPosition();
-    this.velocity = 10;
+    this.velocity = 10 +level;
     this.health = 90 + level * 2;
     this.stamina = 50 + level * 3;
-    this.attack = 10 + level;
+    this.attack = 10 + level*1.5;
     this.strength = 10 + level;
-    this.defense = 8 + level / 2;
-    this.agility = 8 + level / 4;
+    this.defense = 8 + level;
+    this.agility = 8 + level;
     this.level = level;
     this.experience = 0;
 
@@ -85,10 +85,10 @@ class Enemy {
     });
     return isColliding;
   }
-  
+
   move() {
     //console.log(this.checkOrcCollisions());
-     if (!this.checkOrcCollisions()) {
+    if (!this.checkOrcCollisions()) {
       if (this.positionY > battlePosition) {
         this.positionY -= this.velocity;
         this.updateElementPosition();
@@ -128,34 +128,39 @@ class Enemy {
             this.updateElementPosition();
         }
       }
-    }  else {
+    } else {
       this.positionX += (Math.random() - 0.5) * 200;
       this.positionY += 10;
       this.updateElementPosition();
-    } 
-}
-  
+    }
+  }
+
   orcAttack(soldier) {
     let diceThrowAttacker = Math.floor(Math.random() * 12) + 1;
     let diceThrowDefender = Math.floor(Math.random() * 12) + 1;
-    if(this.stamina > 20){
-        if(soldier.stamina > 20){
-        if (diceThrowAttacker+2 <soldier.agility){
-            this.stamina -=10;
-       }}
-            else { 
-
-    if (this.attack * diceThrowAttacker > soldier.defense * diceThrowDefender) {
-      soldier.receivesDamage(this.strength * diceThrowAttacker);
-      this.stamina -=10;
-      soldier.stamina -=10;
-      //console.log("Orc hit you!");
-    } else { this.stamina -=10;
-        soldier.stamina -= this.strength * diceThrowAttacker;
-    }
-    }
-    }
-    else {this.stamina += diceThrowAttacker
+    if (this.stamina > 20) {
+      if (soldier.stamina > 20) {
+        if (diceThrowAttacker + 2 < soldier.agility) {
+          this.stamina -= 10;
+          soldier.experience += 15 * this.level;
+        }
+      } else {
+        if (
+          this.attack * diceThrowAttacker >
+          soldier.defense * diceThrowDefender
+        ) {
+          soldier.receivesDamage(this.strength * diceThrowAttacker);
+          this.stamina -= 10;
+          soldier.stamina -= 10;
+          //console.log("Orc hit you!");
+        } else {
+          this.stamina -= 10;
+          soldier.stamina -= this.strength * diceThrowAttacker;
+          soldier.experience += 15 * this.level;
+        }
+      }
+    } else {
+      this.stamina += diceThrowAttacker;
     }
   }
   receivesDamage(amount) {
@@ -168,15 +173,19 @@ class Enemy {
   orcDied() {
     const index = game.enemies.indexOf(this);
     game.score += this.level;
-    // game.deadEnemies.push(this); 
+    // game.deadEnemies.push(this);
     game.enemies.splice(index, 1);
     this.element.remove();
-    
+    game.battleArray.forEach((soldier) => {
+      soldier.experience += 40 * this.level;
+    });
     console.log(`${game.score} SCORE!`);
     console.log(game.enemies);
+    game.soldiers.forEach((soldier) => {
+      levelUp(soldier);
+    });
   }
-  }
-
+}
 
 /*orcAttack(){
         setTimeout(()=>{

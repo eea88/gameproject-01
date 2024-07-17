@@ -87,6 +87,7 @@ class Soldier {
             if(this.attack * diceThrowAttacker > enemy.defense * diceThrowDefender){
             enemy.receivesDamage(this.strength*diceThrowAttacker);
             this.stamina -=10;
+            this.experience+= 5*diceThrowAttacker*enemy.level;
             //console.log("attack successful");
         } else {this.stamina -=8; 
         }
@@ -98,6 +99,7 @@ class Soldier {
     
     receivesDamage(amount){
         this.health -= amount;
+        this.experience += amount/5;
         //console.log(this.health);
         if(this.health <=0){this.soldierDied()}
     }

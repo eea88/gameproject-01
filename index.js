@@ -14,6 +14,7 @@ const game = {
   soldiersPrincipes: [],
   enemiesBattleCenter: [],
   soldiersTriarii: [],
+  battleArray: [],
   isGameOver: false,
   checkGameOver() {
     if (this.soldiers.length < 1) {
@@ -52,9 +53,9 @@ function playGame() {
     });
     classRemoval();
   };  
-    if (frameCounter < 2000){ 
+    if (frameCounter < 1000){ 
       game.wave = 1;
-    if (frameCounter % 500 === 0) {
+    if (frameCounter % 250 === 0) {
       if (game.enemies.length < 80) {
         
         for (let i = 0; i < 20; i++) {
@@ -66,23 +67,9 @@ function playGame() {
       }
     }
   }
-   else if( frameCounter <4000){
+   else if( frameCounter <2000){
     game.wave = 2;
-    if (frameCounter % 500 === 0) {
-      if (game.enemies.length < 100) {
-        
-        for (let i = 0; i < 20; i++) {
-          // Create 20 basic enemies
-          game.enemies.push(new Enemy(2));
-          console.log("New Enemy Wave");
-        }
-        
-      }
-    }
-  } 
-  else if( frameCounter <6000){
-    game.wave = 3;
-    if (frameCounter % 500 === 0) {
+    if (frameCounter % 250 === 0) {
       if (game.enemies.length < 100) {
         
         for (let i = 0; i < 20; i++) {
@@ -94,28 +81,56 @@ function playGame() {
       }
     }
   } 
-  else if( frameCounter <8000){
-    game.wave = 4;
-    if (frameCounter % 500 === 0) {
-      if (game.enemies.length < 120) {
+  else if( frameCounter <3000){
+    game.wave = 3;
+    if (frameCounter % 250 === 0) {
+      if (game.enemies.length < 100) {
         
         for (let i = 0; i < 20; i++) {
           // Create 20 basic enemies
-          game.enemies.push(new Enemy(4)); // ideally change the Enemy type here
+          game.enemies.push(new Enemy(5));
           console.log("New Enemy Wave");
         }
         
       }
     }
   } 
-  else if( frameCounter <10000){
-    game.wave = 5;
-    if (frameCounter % 500 === 0) {
+  else if( frameCounter <4000){
+    game.wave = 4;
+    if (frameCounter % 250 === 0) {
       if (game.enemies.length < 120) {
         
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 30; i++) {
           // Create 20 basic enemies
-          game.enemies.push(new Enemy(5)); // ideally change the Enemy type here
+          game.enemies.push(new Enemy(7)); // ideally change the Enemy type here
+          console.log("New Enemy Wave");
+        }
+        
+      }
+    }
+  } 
+  else if( frameCounter <5000){
+    game.wave = 5;
+    if (frameCounter % 250 === 0) {
+      if (game.enemies.length < 120) {
+        
+        for (let i = 0; i < 40; i++) {
+          // Create 20 basic enemies
+          game.enemies.push(new Enemy(10)); // ideally change the Enemy type here
+          console.log("New Enemy Wave");
+        }
+        
+      }
+    }
+  } 
+  else if( frameCounter <6000){
+    game.wave = 6;
+    if (frameCounter % 250 === 0) {
+      if (game.enemies.length < 120) {
+        
+        for (let i = 0; i < 50; i++) {
+          // Create 20 basic enemies
+          game.enemies.push(new Enemy(15)); // ideally change the Enemy type here
           console.log("New Enemy Wave");
         }
         

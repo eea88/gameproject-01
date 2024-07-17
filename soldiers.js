@@ -26,6 +26,7 @@ class Soldier {
         this.positionY = 0 // Manage vertical position if needed
         // stats will need to go here
         this.health = 90 + (level * 2);
+        this.maxStamina = 50 + (level * 3);
         this.stamina = 50 + (level * 3);
         this.attack = 10 + level;
         this.strength = 10 + level;
@@ -35,6 +36,8 @@ class Soldier {
         this.experience = 0;
     }  
     checkCollisions() {
+        if(this.stamina < this.maxStamina){
+        this.stamina += 1;}; 
         const getEdges = (element) => {
           const rect = element.getBoundingClientRect();
           return {
@@ -74,14 +77,25 @@ class Soldier {
         
         let diceThrowAttacker = Math.floor(Math.random() * 12) + 1;
         let diceThrowDefender = Math.floor(Math.random() * 12) + 1;
+        if(this.stamina > 20){
+            if(enemy.stamina > 20){
+           if (diceThrowAttacker+2 <enemy.agility){
+                this.stamina -=10;
+           }}
+                else { 
+           
             if(this.attack * diceThrowAttacker > enemy.defense * diceThrowDefender){
             enemy.receivesDamage(this.strength*diceThrowAttacker);
+            this.stamina -=10;
             //console.log("attack successful");
-        } else{
-            ;
+        } else {this.stamina -=8; 
         }
-        
+        }
+        }
+        else { this.stamina += diceThrowAttacker
+        }
     }
+    
     receivesDamage(amount){
         this.health -= amount;
         //console.log(this.health);
@@ -280,7 +294,8 @@ document.addEventListener("keydown", (event) => {
                 principesContainerElement.style.top = (120 - stepsBack) + "px"
                 Principes.yAxis = 120
             }, 700);
-        }
+        };
+        
     }
 });
 
@@ -291,12 +306,12 @@ for (let i = 0; i < 20; i++) { // Create 20 hastati
     game.soldiersHastati.push(hastati);
 }
 for (let i = 0; i < 20; i++) { // Create 20 principes
-    const principes = new Principes(2);
+    const principes = new Principes(2,1);
     game.soldiers.push(principes);
     game.soldiersPrincipes.push(principes);
 }
 for (let i = 0; i < 20; i++) { // Create 20 triarii
-    const triarii = new Triarii(3);
+    const triarii = new Triarii(3,2);
     game.soldiers.push(triarii);
     game.soldiersTriarii.push(triarii);
 }

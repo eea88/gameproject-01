@@ -1,10 +1,10 @@
 function extraBattle(battleArray,bottomContainer){
     if(battleArray.length>= 1){
-    if(game.enemiesBattleLeft.length> 0){
-        let orcNumber = Math.floor(Math.random()*game.enemiesBattleLeft.length);
+    if(game.enemies.length> 0){
+        let orcNumber = Math.floor(Math.random()*game.enemies.length);
         let soldierNumber=  Math.floor(Math.random()*battleArray.length);
         let soldierBlocker = battleArray[soldierNumber];
-        let orcAttacker = game.enemiesBattleLeft[orcNumber];
+        let orcAttacker = game.enemies[orcNumber];
         soldierBlocker.soldierAttack(orcAttacker);
         orcAttacker.orcAttack(soldierBlocker);
         }
@@ -20,12 +20,12 @@ function extraBattle(battleArray,bottomContainer){
 function classRemoval (){
     let battleArray = game.soldiersHastati;
     let bottomContainer = hastatiContainer;
-    if (game.soldiersHastati.length >0 
+    if (game.soldiersHastati.length >=0 
          && hastatiContainer.position === "bottom"){
         battleArray = game.soldiersHastati;
         bottomContainer = hastatiContainerElement
     }
-         else if( game.soldiersPrincipes.length >0 
+         else if( game.soldiersPrincipes.length >=0 
              && principesContainer.position === "bottom")
            { battleArray = game.soldiersPrincipes;
             bottomContainer = principesContainerElement}

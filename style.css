@@ -15,7 +15,7 @@ body{
     width:70%;
     height: 80%;
     background-image:url(./images/BG_0000s_0000_31916.png); 
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
     position: relative;

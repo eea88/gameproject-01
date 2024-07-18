@@ -138,7 +138,7 @@ class Enemy {
         this.attack * diceThrowAttacker >
         soldier.defense * diceThrowDefender
       ) {
-        soldier.receivesDamage(this.strength + diceThrowAttacker);
+        soldier.receivesDamage(this.strength);
         this.stamina -= 10;
         soldier.stamina -= 10;
         console.log("Orc hit you!");

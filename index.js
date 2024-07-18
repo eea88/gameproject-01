@@ -62,8 +62,12 @@ function playGame() {
           // Create 20 basic enemies
           game.enemies.push(new Enemy(1));
           console.log("New Enemy Wave");
-         
         }
+         for (let i = 0; i < 5; i++) {
+          // Create  basic enemies
+          game.enemies.push(new EnemySwordsman(3));
+          game.enemies.push(new EnemyAxeOrc(3));
+        } 
         
       }
     }

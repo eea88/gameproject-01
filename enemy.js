@@ -20,11 +20,11 @@ class Enemy {
     );
     this.positionY = gameArea.offsetHeight - this.element.offsetHeight;
     this.updateElementPosition();
-    this.velocity = 10 +level/2;
+    this.velocity = 10 + level / 2;
     this.health = 90 + level * 2;
     this.stamina = 50 + level * 3;
-    this.attack = 10 + level*1.5;
-    this.strength = 20 + level*2;
+    this.attack = 10 + level * 1.5;
+    this.strength = 20 + level * 2;
     this.defense = 8 + level;
     this.agility = 8 + level;
     this.level = level;
@@ -37,7 +37,7 @@ class Enemy {
     this.element = document.createElement("div");
     let randomClass = Math.floor(Math.random() * 7 + 1);
     this.element.className = enemyClassesArray[randomClass];
-    
+
     gameArea.appendChild(this.element);
   }
   updateElementPosition() {
@@ -137,35 +137,32 @@ class Enemy {
   }
 
   orcAttack(soldier) {
+    console.log("attackkk");
     let diceThrowAttacker = Math.floor(Math.random() * 12) + 1;
     let diceThrowDefender = Math.floor(Math.random() * 12) + 1;
-    if (this.stamina > 20) {
-      if (soldier.stamina > 20) {
-        if (diceThrowAttacker + 2 < soldier.agility) {
-          this.stamina -= 10;
-          soldier.experience += 15 * this.level;
-        }
-      } else {
-        if (
-          this.attack * diceThrowAttacker >
-          soldier.defense * diceThrowDefender
-        ) {
-          soldier.receivesDamage(this.strength * diceThrowAttacker*2);
-          this.stamina -= 10;
-          soldier.stamina -= 10;
-          //console.log("Orc hit you!");
-        } else {
-          this.stamina -= 10;
-          soldier.stamina -= this.strength * diceThrowAttacker;
-          soldier.experience += 15 * this.level;
-        }
-      }
+
+    if (diceThrowAttacker + 3 < soldier.agility) {
+      this.stamina -= 10;
+      soldier.experience += 15;
+      soldier.stamina -= 5;
+      //console.log(`Soldier evaded with ${soldier.agility} vs ${diceThrowAttacker +2} `);
     } else {
-      this.stamina += diceThrowAttacker;
+      if (
+        this.attack * diceThrowAttacker >
+        soldier.defense * diceThrowDefender
+      ) {
+        soldier.receivesDamage(this.strength * diceThrowAttacker * 2);
+        this.stamina -= 10;
+        soldier.stamina -= 10;
+        console.log("Orc hit you!");
+      } else {
+        this.stamina -= 10;
+        soldier.stamina -= this.strength * diceThrowAttacker;
+        soldier.experience += 15 * this.level;
+      }
     }
   }
   receivesDamage(amount) {
-    
     this.health -= amount;
     //console.log(this.health);
     if (this.health <= 0) {
@@ -190,15 +187,14 @@ class Enemy {
 }
 
 class EnemySwordsman extends Enemy {
-  constructor(level){
-  super (level);
-    this.velocity = 15 +level/2;
+  constructor(level) {
+    super(level);
+    this.velocity = 15 + level / 2;
     this.health = 90 + level * 2;
-    this.attack = 15 + level*1.5;
+    this.attack = 15 + level * 1.5;
     this.defense = 10 + level;
     this.agility = 15 + level;
     this.createEnemySwordsmanElement();
-    
   }
   createEnemySwordsmanElement() {
     this.element = document.createElement("div");
@@ -206,82 +202,79 @@ class EnemySwordsman extends Enemy {
     this.updateElementPosition();
     gameArea.appendChild(this.element);
   }
+/*   updateElementPosition() {
+    this.element.style.left = `${this.positionX}px`;
+    this.element.style.top = `${this.positionY}px`;
+  } */
+}
+
+class EnemyAxeOrc extends Enemy {
+  constructor(level) {
+    super(level);
+    this.velocity = 5 + level / 2;
+    this.health = 150 + level * 2;
+    this.attack = 12 + level * 1.5;
+    this.strength = 38 + level;
+    this.defense = 8 + level;
+    this.agility = 3 + level;
+    this.createAxeOrcElement();
+  }
+  createAxeOrcElement() {
+    this.element = document.createElement("div");
+    this.element.className = "ax-orc";
+    this.updateElementPosition();
+    gameArea.appendChild(this.element);
+  }
+ /*  updateElementPosition() {
+    this.element.style.left = `${this.positionX}px`;
+    this.element.style.top = `${this.positionY}px`;
+  } */
+}
+
+class AttackingBoss extends Enemy {
+  constructor(level) {
+    super(level);
+    this.velocity = 10 + level / 2;
+    this.health = 250 + level * 3;
+    this.attack = 20 + level * 1.5;
+    this.strength = 30 + level * 2;
+    this.defense = 15 + level;
+    this.agility = 8 + level;
+    this.createAttackingBossElement();
+  }
+  createAttackingBossElement() {
+    this.element = document.createElement("div");
+    this.element.className = "attack-boss";
+    this.updateElementPosition();
+    gameArea.appendChild(this.element);
+  }
+/*   updateElementPosition() {
+    this.element.style.left = `${this.positionX}px`;
+    this.element.style.top = `${this.positionY}px`;
+  } */
+}
+class BigBoss extends Enemy {
+  constructor(level) {
+    super(level);
+    this.velocity = 10 + level / 2;
+    this.health = 300 + level * 3;
+    this.attack = 25 + level * 1.5;
+    this.strength = 50 + level * 2;
+    this.defense = 25 + level;
+    this.agility = 8 + level;
+    this.createBigBossElement();
+  }
+  createBigBossElement() {
+    this.element = document.createElement("div");
+    this.element.className = "big-boss";
+    this.updateElementPosition();
+    gameArea.appendChild(this.element);
+  }
   updateElementPosition() {
     this.element.style.left = `${this.positionX}px`;
     this.element.style.top = `${this.positionY}px`;
+  }
 }
-  }
-
-  class EnemyAxeOrc extends Enemy {
-    constructor(level){
-    super (level);
-      this.velocity = 5 +level/2;
-      this.health = 150 + level * 2;
-      this.attack = 12 + level*1.5;
-      this.strength = 38 + level;
-      this.defense = 8 + level;
-      this.agility = 3 + level;
-      this.createAxeOrcElement();
-      
-    }
-    createAxeOrcElement() {
-      this.element = document.createElement("div");
-      this.element.className = "ax-orc";
-      this.updateElementPosition();
-      gameArea.appendChild(this.element);
-    }
-    updateElementPosition() {
-      this.element.style.left = `${this.positionX}px`;
-      this.element.style.top = `${this.positionY}px`;
-  }
-    }
-
-    class AttackingBoss extends Enemy {
-      constructor(level){
-      super (level);
-        this.velocity = 10 +level/2;
-        this.health = 250 + level * 3;
-        this.attack = 20 + level*1.5;
-        this.strength = 30 + level*2;
-        this.defense = 15 + level;
-        this.agility = 8 + level;
-        this.createAttackingBossElement();
-        
-      }
-      createAttackingBossElement() {
-        this.element = document.createElement("div");
-        this.element.className = "attack-boss";
-        this.updateElementPosition();
-        gameArea.appendChild(this.element);
-      }
-      updateElementPosition() {
-        this.element.style.left = `${this.positionX}px`;
-        this.element.style.top = `${this.positionY}px`;
-    }
-      }
-      class BigBoss extends Enemy {
-        constructor(level){
-        super (level);
-          this.velocity = 10 +level/2;
-          this.health = 300 + level * 3;
-          this.attack = 25 + level*1.5;
-          this.strength = 50 + level*2;
-          this.defense = 25 + level;
-          this.agility = 8 + level;
-          this.createBigBossElement();
-          
-        }
-        createBigBossElement() {
-          this.element = document.createElement("div");
-          this.element.className = "big-boss";
-          this.updateElementPosition();
-          gameArea.appendChild(this.element);
-        }
-        updateElementPosition() {
-          this.element.style.left = `${this.positionX}px`;
-          this.element.style.top = `${this.positionY}px`;
-      }
-        }
 
 for (let i = 0; i < 20; i++) {
   // Create 20 basic enemies

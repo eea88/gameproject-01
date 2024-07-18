@@ -25,19 +25,21 @@ class Soldier {
         this.positionX = currentXPosition // Use the currentXPosition to set the initial position
         this.positionY = 0 // Manage vertical position if needed
         // stats will need to go here
-        this.health = 90 + (level * 2);
+        this.health = 100 + (level * 2);
         this.maxStamina = 50 + (level * 3);
         this.stamina = 50 + (level * 3);
         this.attack = 10 + level;
         this.strength = 10 + level;
         this.defense = 8 + (level / 2);
-        this.agility = 8 + (level / 4);
+        this.agility = 8 +(level/4);
         this.level = level;
         this.experience = 0;
     }  
     checkCollisions() {
         if(this.stamina < this.maxStamina){
-        this.stamina += 0.5}; 
+        this.stamina += 0.5};
+        this.updateHealthBar();
+        this.updateStaminaBar(); 
         const getEdges = (element) => {
           const rect = element.getBoundingClientRect();
           return {
@@ -100,7 +102,7 @@ class Soldier {
     receivesDamage(amount){
         
         this.health -= amount ;
-        //console.log(this.health);
+        console.log(this.health);
         if(this.health <=0){this.soldierDied()}
     }
     soldierDied(){
@@ -132,6 +134,14 @@ class Soldier {
             break;
         }
     }
+    updateHealthBar(){
+        const healthElement = Math.min(this.health,100);
+        this.healthFill.style.width = `${healthElement}%`;
+    }
+    updateStaminaBar(){
+        const staminaElement = Math.min(this.stamina,100);
+        this.staminaFill.style.width = `${staminaElement}%`;
+    }
     }
     
 
@@ -151,6 +161,24 @@ class Hastati extends Soldier {
         hastatiContainerElement.appendChild(this.element);
         hastatiContainerElement.style.alignItems = 'center';
         hastatiContainerElement.style.justifyContent = 'center';
+        // Health Bar
+        const barContainer = document.createElement("div");
+        barContainer.className = "bar-container-hastati";
+        const healthBar = document.createElement("div");
+        healthBar.className = "health-bar";
+        this.healthFill = document.createElement ("div");
+        this.healthFill.className = "health-fill";
+        healthBar.appendChild(this.healthFill);
+        //Stamina bar
+        const staminaBar = document.createElement('div');
+        staminaBar.className = 'stamina-bar';
+        this.staminaFill = document.createElement('div');
+        this.staminaFill.className = 'stamina-fill';
+        staminaBar.appendChild(this.staminaFill);
+        // Append bars to soldier element
+        barContainer.appendChild(staminaBar);
+        barContainer.appendChild(healthBar);
+        this.element.appendChild(barContainer);
     }
     updateElementPosition() {
         this.element.style.left = `${this.positionX}px`;
@@ -180,6 +208,24 @@ class Principes extends Soldier {
         principesContainerElement.appendChild(this.element);
         principesContainerElement.style.alignItems = 'center';
         principesContainerElement.style.justifyContent = 'center';
+        // Health Bar
+        const barContainer = document.createElement("div");
+        barContainer.className = "bar-container-principes";
+        const healthBar = document.createElement("div");
+        healthBar.className = "health-bar";
+        this.healthFill = document.createElement ("div");
+        this.healthFill.className = "health-fill";
+        healthBar.appendChild(this.healthFill);
+        //Stamina bar
+        const staminaBar = document.createElement('div');
+        staminaBar.className = 'stamina-bar';
+        this.staminaFill = document.createElement('div');
+        this.staminaFill.className = 'stamina-fill';
+        staminaBar.appendChild(this.staminaFill);
+        // Append bars to soldier element
+        barContainer.appendChild(staminaBar);
+        barContainer.appendChild(healthBar);
+        this.element.appendChild(barContainer);
     }
     updateElementPosition() {
         this.element.style.left = `${this.positionX}px`;
@@ -208,6 +254,24 @@ class Triarii extends Soldier {
         triariiContainerElement.appendChild(this.element);
         triariiContainerElement.style.alignItems = 'center';
         triariiContainerElement.style.justifyContent = 'center';
+        // Health Bar
+        const barContainer = document.createElement("div");
+        barContainer.className = "bar-container-triarii";
+        const healthBar = document.createElement("div");
+        healthBar.className = "health-bar";
+        this.healthFill = document.createElement ("div");
+        this.healthFill.className = "health-fill";
+        healthBar.appendChild(this.healthFill);
+        //Stamina bar
+        const staminaBar = document.createElement('div');
+        staminaBar.className = 'stamina-bar';
+        this.staminaFill = document.createElement('div');
+        this.staminaFill.className = 'stamina-fill';
+        staminaBar.appendChild(this.staminaFill);
+        // Append bars to soldier element
+        barContainer.appendChild(staminaBar);
+        barContainer.appendChild(healthBar);
+        this.element.appendChild(barContainer);
     }
     updateElementPosition() {
         this.element.style.left = `${this.positionX}px`;

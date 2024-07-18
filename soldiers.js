@@ -37,7 +37,7 @@ class Soldier {
     }  
     checkCollisions() {
         if(this.stamina < this.maxStamina){
-        this.stamina += 1;}; 
+        this.stamina += 0.5}; 
         const getEdges = (element) => {
           const rect = element.getBoundingClientRect();
           return {
@@ -77,7 +77,7 @@ class Soldier {
         
         let diceThrowAttacker = Math.floor(Math.random() * 12) + 1;
         let diceThrowDefender = Math.floor(Math.random() * 12) + 1;
-        if(this.stamina > 20){
+        if(this.stamina > 50){
             if(enemy.stamina > 20){
            if (diceThrowAttacker+2 <enemy.agility){
                 this.stamina -=10;
@@ -85,7 +85,7 @@ class Soldier {
                 else { 
            
             if(this.attack * diceThrowAttacker > enemy.defense * diceThrowDefender){
-            enemy.receivesDamage(this.strength*diceThrowAttacker);
+            enemy.receivesDamage(this.strength*diceThrowAttacker*2);
             this.stamina -=10;
             this.experience+= 5*diceThrowAttacker*enemy.level;
             //console.log("attack successful");
@@ -98,8 +98,8 @@ class Soldier {
     }
     
     receivesDamage(amount){
-        this.health -= amount;
-        this.experience += amount/5;
+        
+        this.health -= amount ;
         //console.log(this.health);
         if(this.health <=0){this.soldierDied()}
     }
@@ -167,7 +167,7 @@ class Principes extends Soldier {
         super(level); // will add stats later
         this.armor = armor + level;
         this.attack = 10 + level * 2;
-        this.strength = 10 + level * 2;
+        this.strength = 12 + level;
         this.type= "principe";
         this.createPrincipesElement();
 
@@ -195,7 +195,7 @@ class Triarii extends Soldier {
         this.attack = 15;
         this.stamina = 150 + (level * 3);
         this.attack = 10 + level * 2;
-        this.strength = 10 + level * 2;
+        this.strength = 15 + level * 2;
         this.type= "triarii";
         this.createTriariiElement();
     }

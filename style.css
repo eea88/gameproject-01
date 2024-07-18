@@ -2,6 +2,7 @@
     margin:0;
     padding:0;
     box-sizing: border-box;
+    font-family: fantasy;
 }
 body{
     height: 100vh;
@@ -9,10 +10,12 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: white;
+    background-color: black;
 }
 
 #game-area{
-    width:70%;
+    width:80%;
     height: 80%;
     background-image:url(./images/BG_0000s_0000_31916.png); 
     background-size: cover;
@@ -198,6 +201,58 @@ body{
     background-repeat: no-repeat;
     z-index: 4;
 }
+.swordsman{
+    
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    margin: 1px;
+    top: 0;
+    left: 0;
+    background-image: url(./images/sword-orc.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 5;
+}
+.ax-orc{
+    
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    margin: 1px;
+    top: 0;
+    left: 0;
+    background-image: url(./images/ax-orc.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 5;
+}
+.attack-boss{
+    
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    margin: 1px;
+    top: 0;
+    left: 0;
+    background-image: url(./images/attacking-boss.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 6;
+}
+.big-boss{
+    
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    margin: 1px;
+    top: 0;
+    left: 0;
+    background-image: url(./images/big-boss.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 6;
+}
 .grid{
     width : 25px;
     height:25px;
@@ -226,10 +281,11 @@ body{
     background-size: cover;
     width: 50vw;
     height: 50vh;
-    border: 10px solid brown;
+    
     border-radius: 13px;
     text-align: center;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: 4em;
@@ -240,4 +296,26 @@ body{
     cursor: pointer;
     transition: 300ms;
   }
-  
+  #try-again-btn:hover{
+  transform: scale(1.1);
+    }
+  #game-over{
+    color: red;
+    font-size: 2em;
+  }
+  #score-gameover{
+    color: black;
+    font-size: 1em;
+  }
+  h3{
+    text-align: left;
+    position: absolute;
+    top: 0;
+    left :400;
+  }
+  h4{
+    text-align: left;
+    position: absolute;
+    top: 0;
+    left :0;
+  }

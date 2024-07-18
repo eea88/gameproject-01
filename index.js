@@ -282,6 +282,48 @@ function playGame() {
         }
       }
     }
+    else if( frameCounter <20000){
+      game.wave = 13;
+      if (frameCounter % 250 === 0) {
+        if (game.enemies.length < 300) {
+          
+          for (let i = 0; i < 50; i++) {
+            // Create 20 basic enemies
+            game.enemies.push(new BasicOrc(15)); // ideally change the Enemy type here
+            console.log("New Enemy Wave");
+          }
+           for (let i = 0; i < 10; i++) {
+            // Create  basic enemies
+            game.enemies.push(new AttackingBoss(12));
+           
+          }
+           
+            game.enemies.push(new BigBoss(25));
+          
+        }
+      }
+    }
+    else if( frameCounter <22000){
+      game.wave = 14;
+      if (frameCounter % 250 === 0) {
+        if (game.enemies.length < 300) {
+          
+          for (let i = 0; i < 50; i++) {
+            // Create 20 basic enemies
+            game.enemies.push(new BasicOrc(17)); // ideally change the Enemy type here
+            console.log("New Enemy Wave");
+          }
+           for (let i = 0; i < 20; i++) {
+            // Create  basic enemies
+            game.enemies.push(new AttackingBoss(15));
+           
+          }
+           
+            game.enemies.push(new BigBoss(30));
+          
+        }
+      }
+    }
     game.checkGameOver();
   
   window.requestAnimationFrame(playGame);

@@ -138,7 +138,7 @@ class Enemy {
         this.attack * diceThrowAttacker >
         soldier.defense * diceThrowDefender
       ) {
-        soldier.receivesDamage(this.strength);
+        soldier.receivesDamage(this.strength * diceThrowAttacker);
         this.stamina -= 10;
         soldier.stamina -= 10;
         console.log("Orc hit you!");
@@ -252,7 +252,7 @@ class AttackingBoss extends Enemy {
     super(level);
     this.velocity = 10 + level / 2;
     this.health = 250 + level * 3;
-    this.attack = 30 + level * 3;
+    this.attack = 30 + level * 4;
     this.strength = 30 + level * 3;
     this.defense = 15 + level;
     this.agility = 8 + level;
@@ -279,7 +279,7 @@ class BigBoss extends Enemy {
     super(level);
     this.velocity = 10 + level / 2;
     this.health = 300 + level * 3;
-    this.attack = 25 + level * 1.5;
+    this.attack = 25 + level * 3;
     this.strength = 30 + level * 3;
     this.defense = 30 + level *3;
     this.agility = 8 + level;

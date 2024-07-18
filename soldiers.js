@@ -28,7 +28,7 @@ class Soldier {
     this.maxStamina = 50 + level * 3;
     this.stamina = 50 + level * 3;
     this.attack = 10 + level;
-    this.strength = 10 + level;
+    this.strength = 8 + level;
     this.defense = 8 + level / 2;
     this.agility = 8 + level / 4;
     this.level = level;
@@ -88,7 +88,7 @@ class Soldier {
           this.attack * diceThrowAttacker >
           enemy.defense * diceThrowDefender
         ) {
-          enemy.receivesDamage(this.strength * diceThrowAttacker);
+          enemy.receivesDamage(this.strength * diceThrowAttacker *2);
           this.stamina -= 10;
           this.experience += 2 * diceThrowAttacker * enemy.level;
           console.log("soldier attack successful");
@@ -198,6 +198,7 @@ class Principes extends Soldier {
     this.armor = armor + level;
     this.attack = 15 + level * 2;
     this.strength = 15 + level;
+    this.defense = 15 + level*2; 
     this.type = "principe";
     this.createPrincipesElement();
   }
@@ -242,6 +243,7 @@ class Triarii extends Soldier {
     this.stamina = 150 + level * 3;
     this.attack = 15 + level * 2;
     this.strength = 18 + level * 2;
+    this.defense = 20 + level *2;
     this.type = "triarii";
     this.createTriariiElement();
   }

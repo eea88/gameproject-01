@@ -200,7 +200,7 @@ function playGame() {
       if (frameCounter % 250 === 0) {
         if (game.enemies.length < 200) {
           
-          for (let i = 0; i < 40; i++) {
+          for (let i = 0; i < 30; i++) {
             // Create 20 basic enemies
             game.enemies.push(new BasicOrc(8)); // ideally change the Enemy type here
             console.log("New Enemy Wave");
@@ -222,7 +222,7 @@ function playGame() {
       if (frameCounter % 250 === 0) {
         if (game.enemies.length < 200) {
           
-          for (let i = 0; i < 50; i++) {
+          for (let i = 0; i < 20; i++) {
             // Create 20 basic enemies
             game.enemies.push(new BasicOrc(9)); // ideally change the Enemy type here
             console.log("New Enemy Wave");
@@ -242,9 +242,9 @@ function playGame() {
     else if( frameCounter <16000){
       game.wave = 11;
       if (frameCounter % 250 === 0) {
-        if (game.enemies.length < 250) {
+        if (game.enemies.length < 200) {
           
-          for (let i = 0; i < 50; i++) {
+          for (let i = 0; i < 20; i++) {
             // Create 20 basic enemies
             game.enemies.push(new BasicOrc(10)); // ideally change the Enemy type here
             console.log("New Enemy Wave");
@@ -264,9 +264,9 @@ function playGame() {
     else if( frameCounter <18000){
       game.wave = 12;
       if (frameCounter % 250 === 0) {
-        if (game.enemies.length < 300) {
+        if (game.enemies.length < 200) {
           
-          for (let i = 0; i < 50; i++) {
+          for (let i = 0; i < 20; i++) {
             // Create 20 basic enemies
             game.enemies.push(new BasicOrc(12)); // ideally change the Enemy type here
             console.log("New Enemy Wave");
@@ -285,9 +285,9 @@ function playGame() {
     else if( frameCounter <20000){
       game.wave = 13;
       if (frameCounter % 250 === 0) {
-        if (game.enemies.length < 300) {
+        if (game.enemies.length < 200) {
           
-          for (let i = 0; i < 50; i++) {
+          for (let i = 0; i < 20; i++) {
             // Create 20 basic enemies
             game.enemies.push(new BasicOrc(15)); // ideally change the Enemy type here
             console.log("New Enemy Wave");
@@ -306,9 +306,9 @@ function playGame() {
     else if( frameCounter <22000){
       game.wave = 14;
       if (frameCounter % 250 === 0) {
-        if (game.enemies.length < 300) {
+        if (game.enemies.length < 200) {
           
-          for (let i = 0; i < 50; i++) {
+          for (let i = 0; i < 20; i++) {
             // Create 20 basic enemies
             game.enemies.push(new BasicOrc(17)); // ideally change the Enemy type here
             console.log("New Enemy Wave");

@@ -196,11 +196,11 @@ function playGame() {
             game.enemies.push(new BasicOrc(8)); // ideally change the Enemy type here
             console.log("New Enemy Wave");
           }
-          /* for (let i = 0; i < 3; i++) {
+           for (let i = 0; i < 3; i++) {
             // Create  basic enemies
             game.enemies.push(new EnemySwordsman(5));
             game.enemies.push(new EnemyAxeOrc(5));
-          } */
+          } 
             game.enemies.push(new AttackingBoss(5));
             game.enemies.push(new AttackingBoss(5));
             game.enemies.push(new BigBoss(3));
@@ -218,14 +218,57 @@ function playGame() {
             game.enemies.push(new BasicOrc(9)); // ideally change the Enemy type here
             console.log("New Enemy Wave");
           }
-          /* for (let i = 0; i < 5; i++) {
+           for (let i = 0; i < 5; i++) {
             // Create  basic enemies
             game.enemies.push(new EnemySwordsman(5));
             game.enemies.push(new EnemyAxeOrc(5));
-          } */
+          } 
             game.enemies.push(new AttackingBoss(7));
             game.enemies.push(new AttackingBoss(7));
             game.enemies.push(new BigBoss(10));
+          
+        }
+      }
+    }
+    else if( frameCounter <16000){
+      game.wave = 11;
+      if (frameCounter % 250 === 0) {
+        if (game.enemies.length < 250) {
+          
+          for (let i = 0; i < 50; i++) {
+            // Create 20 basic enemies
+            game.enemies.push(new BasicOrc(10)); // ideally change the Enemy type here
+            console.log("New Enemy Wave");
+          }
+           for (let i = 0; i < 10; i++) {
+            // Create  basic enemies
+            game.enemies.push(new EnemySwordsman(7));
+            game.enemies.push(new EnemyAxeOrc(7));
+          }
+            game.enemies.push(new AttackingBoss(10));
+            game.enemies.push(new AttackingBoss(10));
+            game.enemies.push(new BigBoss(12));
+          
+        }
+      }
+    }
+    else if( frameCounter <18000){
+      game.wave = 12;
+      if (frameCounter % 250 === 0) {
+        if (game.enemies.length < 300) {
+          
+          for (let i = 0; i < 50; i++) {
+            // Create 20 basic enemies
+            game.enemies.push(new BasicOrc(12)); // ideally change the Enemy type here
+            console.log("New Enemy Wave");
+          }
+           for (let i = 0; i < 10; i++) {
+            // Create  basic enemies
+            game.enemies.push(new AttackingBoss(10));
+           
+          }
+           
+            game.enemies.push(new BigBoss(20));
           
         }
       }

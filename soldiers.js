@@ -88,7 +88,7 @@ class Soldier {
           this.attack * diceThrowAttacker >
           enemy.defense * diceThrowDefender
         ) {
-          enemy.receivesDamage(this.strength + diceThrowAttacker);
+          enemy.receivesDamage(this.strength * diceThrowAttacker);
           this.stamina -= 10;
           this.experience += 2 * diceThrowAttacker * enemy.level;
           console.log("soldier attack successful");

@@ -304,6 +304,11 @@ body{
     color: black;
     font-size: 1em;
   }
+  #big-boss-image{
+    position: absolute;
+    left : 0;
+    top: 300;
+  }
   h3{
     text-align: left;
     position: absolute;

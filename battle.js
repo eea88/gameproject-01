@@ -89,5 +89,16 @@ function levelUp(soldier){
     soldier.defense +=1;
     
     soldier.strength +=2;
+}else if (soldier.experience>=600 && soldier.level <7){
+    //level up 7 & above
+    soldier.level +=1;
+    soldier.maxStamina += 20;
+    soldier.stamina +=20;
+    soldier.health += 10;
+    soldier.defense +=1;
+    soldier.attack+=1;   
+    soldier.strength +=2;
+    soldier.experience -=100;
 }
+
 }

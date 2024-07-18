@@ -16,7 +16,7 @@ function extraBattle(battleArray,bottomContainer){
         game.battleArray = game.soldiersTriarii;
         bottomContainer = triariiContainerElement;
         let soldierNumber=  Math.floor(Math.random()*game.battleArray.length);
-        if(soldierNumber>2){
+        if(soldierNumber>0){
         let woundedSoldier = game.battleArray[soldierNumber];
         woundedSoldier.receivesDamage(20);
         console.log(woundedSoldier.health);

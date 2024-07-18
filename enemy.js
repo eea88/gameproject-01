@@ -130,7 +130,7 @@ class Enemy {
 
     if (diceThrowAttacker + 1 < soldier.agility) {
       this.stamina -= 10;
-      soldier.experience += 15;
+      soldier.experience += 15 *this.level;
       soldier.stamina -= 2;
       //console.log(`Soldier evaded with ${soldier.agility} vs ${diceThrowAttacker +2} `);
     } else {
@@ -138,7 +138,7 @@ class Enemy {
         this.attack * diceThrowAttacker >
         soldier.defense * diceThrowDefender
       ) {
-        soldier.receivesDamage(this.strength * diceThrowAttacker);
+        soldier.receivesDamage(this.strength);
         this.stamina -= 10;
         soldier.stamina -= 10;
         console.log("Orc hit you!");

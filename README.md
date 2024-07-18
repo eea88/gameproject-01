@@ -10,7 +10,7 @@ My game is a Wave kind of game where the idea is to have Orcs (enemies) that att
 
 Enemy waves will approach the soldiers directly and your job is to manage the soldiers for them to win the battles. You manage the soldiers by rotating your battle lines, just like the Roman army back in the days.
 
-For Game play rotate your lines by pressing space-bar. you top-line will tire and lose stamina as the battle progress.  
+For Game play rotate your lines by pressing space-bar. Your bottom-line will get tired and lose stamina as the battle progress.  
 
 Attacks, defenses and evasion will cost your soldier Stamina points.
 Stamina regenerates by 1 point with every frame until it reaches the soldier Maximum Stamina. So a soldier in the back line will not lose stamina and will be able to get some rest in order to be able to go back to battle.

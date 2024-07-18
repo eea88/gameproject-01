@@ -24,7 +24,7 @@ class Enemy {
     this.health = 90 + level * 2;
     this.stamina = 50 + level * 3;
     this.attack = 10 + level * 1.5;
-    this.strength = 20 + level * 2;
+    this.strength = 10 + level * 2;
     this.defense = 8 + level;
     this.agility = 8 + level;
     this.level = level;
@@ -191,7 +191,7 @@ class EnemySwordsman extends Enemy {
     super(level);
     this.velocity = 15 + level / 2;
     this.health = 90 + level * 2;
-    this.attack = 15 + level * 1.5;
+    this.attack = 12 + level * 1.5;
     this.defense = 10 + level;
     this.agility = 15 + level;
     this.createEnemySwordsmanElement();
@@ -214,7 +214,7 @@ class EnemyAxeOrc extends Enemy {
     this.velocity = 5 + level / 2;
     this.health = 150 + level * 2;
     this.attack = 12 + level * 1.5;
-    this.strength = 38 + level;
+    this.strength = 18 + level;
     this.defense = 8 + level;
     this.agility = 3 + level;
     this.createAxeOrcElement();
@@ -237,7 +237,7 @@ class AttackingBoss extends Enemy {
     this.velocity = 10 + level / 2;
     this.health = 250 + level * 3;
     this.attack = 20 + level * 1.5;
-    this.strength = 30 + level * 2;
+    this.strength = 20 + level * 2;
     this.defense = 15 + level;
     this.agility = 8 + level;
     this.createAttackingBossElement();
@@ -258,9 +258,9 @@ class BigBoss extends Enemy {
     super(level);
     this.velocity = 10 + level / 2;
     this.health = 300 + level * 3;
-    this.attack = 25 + level * 1.5;
-    this.strength = 50 + level * 2;
-    this.defense = 25 + level;
+    this.attack = 20 + level * 1.5;
+    this.strength = 25 + level * 2;
+    this.defense = 20 + level;
     this.agility = 8 + level;
     this.createBigBossElement();
   }

@@ -12,14 +12,9 @@ const enemyClassesArray = [
 
 class Enemy {
   constructor(level) {
-    this.createEnemyElement();
-    //this metod creates the enemey which we need to set the position
+  
 
-    this.positionX = Math.floor(
-      Math.random() * (gameArea.offsetWidth - this.element.offsetWidth)
-    );
-    this.positionY = gameArea.offsetHeight - this.element.offsetHeight;
-    this.updateElementPosition();
+    
     this.velocity = 10 + level / 2;
     this.health = 90 + level * 2;
     this.stamina = 50 + level * 3;
@@ -31,14 +26,6 @@ class Enemy {
     this.experience = 0;
 
     //other stats go here
-  }
-
-  createEnemyElement() {
-    this.element = document.createElement("div");
-    let randomClass = Math.floor(Math.random() * 7 + 1);
-    this.element.className = enemyClassesArray[randomClass];
-
-    gameArea.appendChild(this.element);
   }
   updateElementPosition() {
     this.element.style.left = `${this.positionX}px`;
@@ -186,6 +173,25 @@ class Enemy {
   }
 }
 
+class BasicOrc extends Enemy{
+  constructor(level) {
+    super(level);
+    this.createEnemyElement();
+    this.positionX = Math.floor(
+      Math.random() * (gameArea.offsetWidth - this.element.offsetWidth)
+    );
+    this.positionY = gameArea.offsetHeight - this.element.offsetHeight;
+    this.updateElementPosition();
+}
+createEnemyElement() {
+  this.element = document.createElement("div");
+  let randomClass = Math.floor(Math.random() * 7 + 1);
+  this.element.className = enemyClassesArray[randomClass];
+
+  gameArea.appendChild(this.element);
+}
+
+}
 class EnemySwordsman extends Enemy {
   constructor(level) {
     super(level);
@@ -195,6 +201,11 @@ class EnemySwordsman extends Enemy {
     this.defense = 10 + level;
     this.agility = 10 + level;
     this.createEnemySwordsmanElement();
+    this.positionX = Math.floor(
+      Math.random() * (gameArea.offsetWidth - this.element.offsetWidth)
+    );
+    this.positionY = gameArea.offsetHeight - this.element.offsetHeight;
+    this.updateElementPosition();
   }
   createEnemySwordsmanElement() {
     this.element = document.createElement("div");
@@ -218,6 +229,11 @@ class EnemyAxeOrc extends Enemy {
     this.defense = 8 + level;
     this.agility = 3 + level;
     this.createAxeOrcElement();
+    this.positionX = Math.floor(
+      Math.random() * (gameArea.offsetWidth - this.element.offsetWidth)
+    );
+    this.positionY = gameArea.offsetHeight - this.element.offsetHeight;
+    this.updateElementPosition();
   }
   createAxeOrcElement() {
     this.element = document.createElement("div");
@@ -241,6 +257,11 @@ class AttackingBoss extends Enemy {
     this.defense = 15 + level;
     this.agility = 8 + level;
     this.createAttackingBossElement();
+    this.positionX = Math.floor(
+      Math.random() * (gameArea.offsetWidth - this.element.offsetWidth)
+    );
+    this.positionY = gameArea.offsetHeight - this.element.offsetHeight;
+    this.updateElementPosition();
   }
   createAttackingBossElement() {
     this.element = document.createElement("div");
@@ -263,6 +284,11 @@ class BigBoss extends Enemy {
     this.defense = 20 + level;
     this.agility = 8 + level;
     this.createBigBossElement();
+    this.positionX = Math.floor(
+      Math.random() * (gameArea.offsetWidth - this.element.offsetWidth)
+    );
+    this.positionY = gameArea.offsetHeight - this.element.offsetHeight;
+    this.updateElementPosition();
   }
   createBigBossElement() {
     this.element = document.createElement("div");
@@ -278,7 +304,7 @@ class BigBoss extends Enemy {
 
 for (let i = 0; i < 20; i++) {
   // Create 20 basic enemies
-  game.enemies.push(new Enemy(1));
+  game.enemies.push(new BasicOrc(1));
 }
 
 /* setInterval(() =>{

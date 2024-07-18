@@ -1,6 +1,6 @@
 function extraBattle(battleArray,bottomContainer){
     if(game.battleArray.length>= 1){
-    if(game.enemies.length> 0){
+    if(game.enemies.length> 40){
         let orcNumber = Math.floor(Math.random()*game.enemies.length);
         let soldierNumber=  Math.floor(Math.random()*game.battleArray.length);
         let soldierBlocker = game.battleArray[soldierNumber];

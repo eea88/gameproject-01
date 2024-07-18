@@ -1,5 +1,13 @@
 //console.log("INDEX JS RUNNING");
 const gameOverElement = document.querySelector("#game-over-screen");
+const startGameButton = document.querySelector("#start-game-btn");
+const gameStartScreen = document.querySelector("#game-start-screen");
+
+startGameButton.addEventListener("click", () => {
+  game.hasStarted = true;
+  gameStartScreen.style.display = "none";
+});
+
 
 const game = {
   score: 0,
@@ -16,6 +24,7 @@ const game = {
   soldiersTriarii: [],
   battleArray: [],
   isGameOver: false,
+  hasStarted: false,
   checkGameOver() {
     if (this.soldiers.length < 1) {
       gameOverElement.style.display = "flex";
@@ -42,7 +51,7 @@ function playGame() {
   waveElement.textContent = game.wave;
   frames++;
   frameCounter++;
-  if (!game.isGameOver && frameCounter % 10 === 0) {
+  if (!game.isGameOver && game.hasStarted &&  frameCounter % 10 === 0) {
     // Execute game logic every 10 frames
 
     game.enemies.forEach((enemy) => {

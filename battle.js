@@ -104,7 +104,6 @@ function levelUp(soldier){
     //level up 7 & above
     soldier.level +=1;
     soldier.maxStamina += 20;
-    soldier.stamina +=5;
     soldier.health += 10;
     soldier.defense +=1;
     soldier.attack+=1;

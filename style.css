@@ -380,4 +380,31 @@ body{
     border-radius: 5px;
     z-index: 4;
 }
+#title-img {
+    width: 50%;
+  }
+  
+  #start-game-btn {
+    position: absolute;
+    bottom: 10%;
+    width: 12%;
+    cursor: pointer;
+    transition: 300ms;
+  }
 
+  #start-game-btn:hover {
+    transform: scale(1.1);
+  }
+  #game-start-screen {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(9, 102, 182, 0.456);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    padding: 10em;
+    gap: 2em;
+    z-index: 9;
+  }

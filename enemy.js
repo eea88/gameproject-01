@@ -23,7 +23,7 @@ class Enemy {
     this.velocity = 10 + level / 2;
     this.health = 90 + level * 2;
     this.stamina = 50 + level * 3;
-    this.attack = 10 + level * 1.5;
+    this.attack = 8 + level * 1.5;
     this.strength = 10 + level * 2;
     this.defense = 8 + level;
     this.agility = 8 + level;
@@ -141,23 +141,23 @@ class Enemy {
     let diceThrowAttacker = Math.floor(Math.random() * 12) + 1;
     let diceThrowDefender = Math.floor(Math.random() * 12) + 1;
 
-    if (diceThrowAttacker + 3 < soldier.agility) {
+    if (diceThrowAttacker + 1 < soldier.agility) {
       this.stamina -= 10;
       soldier.experience += 15;
-      soldier.stamina -= 5;
+      soldier.stamina -= 2;
       //console.log(`Soldier evaded with ${soldier.agility} vs ${diceThrowAttacker +2} `);
     } else {
       if (
         this.attack * diceThrowAttacker >
         soldier.defense * diceThrowDefender
       ) {
-        soldier.receivesDamage(this.strength * diceThrowAttacker * 2);
+        soldier.receivesDamage(this.strength * diceThrowAttacker);
         this.stamina -= 10;
         soldier.stamina -= 10;
         console.log("Orc hit you!");
       } else {
         this.stamina -= 10;
-        soldier.stamina -= this.strength * diceThrowAttacker;
+        soldier.stamina -= diceThrowAttacker;
         soldier.experience += 15 * this.level;
       }
     }
@@ -193,7 +193,7 @@ class EnemySwordsman extends Enemy {
     this.health = 90 + level * 2;
     this.attack = 12 + level * 1.5;
     this.defense = 10 + level;
-    this.agility = 15 + level;
+    this.agility = 10 + level;
     this.createEnemySwordsmanElement();
   }
   createEnemySwordsmanElement() {

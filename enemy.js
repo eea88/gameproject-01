@@ -253,7 +253,7 @@ class AttackingBoss extends Enemy {
     this.velocity = 10 + level / 2;
     this.health = 250 + level * 3;
     this.attack = 30 + level * 4;
-    this.strength = 30 + level * 3;
+    this.strength = 50 + level * 3;
     this.defense = 15 + level;
     this.agility = 8 + level;
     this.createAttackingBossElement();
@@ -280,7 +280,7 @@ class BigBoss extends Enemy {
     this.velocity = 10 + level / 2;
     this.health = 300 + level * 3;
     this.attack = 25 + level * 3;
-    this.strength = 30 + level * 3;
+    this.strength = 40 + level * 3;
     this.defense = 30 + level *3;
     this.agility = 8 + level;
     this.createBigBossElement();

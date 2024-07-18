@@ -22,10 +22,10 @@ function extraBattle(battleArray,bottomContainer){
         console.log(woundedSoldier.health);
     }
     }  
-    if(game.soldiers.length * 5 < game.enemies.length){
+    if(game.soldiers.length * 3 < game.enemies.length){
         let orcNumber = Math.floor(Math.random()*game.enemies.length);
         let soldierNumber=  Math.floor(Math.random()*game.battleArray.length);
-        if(soldierNumber>2){
+        if(soldierNumber>1){
         let soldierBlocker = game.battleArray[soldierNumber];
         let orcAttacker = game.enemies[orcNumber];
         soldierBlocker.soldierAttack(orcAttacker);

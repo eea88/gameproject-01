@@ -26,7 +26,7 @@ const game = {
   isGameOver: false,
   hasStarted: false,
   checkGameOver() {
-    if (this.soldiers.length < 1) {
+    if (this.soldiers.length  < 1 && game.hasStarted) {
       gameOverElement.style.display = "flex";
       this.isGameOver = true;
       let scoreElement = document.querySelector("#score-end");

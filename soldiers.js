@@ -36,7 +36,7 @@ class Soldier {
   }
   checkCollisions() {
     if (this.stamina < this.maxStamina) {
-      this.stamina += 1;
+      this.stamina += 1/3;
     }
     this.updateHealthBar();
     this.updateStaminaBar();

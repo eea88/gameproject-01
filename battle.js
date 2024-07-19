@@ -16,7 +16,7 @@ function extraBattle(battleArray,bottomContainer){
         game.battleArray = game.soldiersTriarii;
         bottomContainer = triariiContainerElement;
         let soldierNumber=  Math.floor(Math.random()*game.battleArray.length);
-        if(soldierNumber>0){
+        if(soldierNumber>2){
         let woundedSoldier = game.battleArray[soldierNumber];
         woundedSoldier.receivesDamage(20);
         console.log(woundedSoldier.health);
@@ -104,11 +104,11 @@ function levelUp(soldier){
     //level up 7 & above
     soldier.level +=1;
     soldier.maxStamina += 20;
-    soldier.health += 10;
+    soldier.health += 1;
     soldier.defense +=1;
-    soldier.attack+=1;
+    soldier.attack+= (1*soldier.level -5);
     soldier.agility+=1;   
-    soldier.strength +=1;
+    soldier.strength += (1*soldier.level -5);
     soldier.experience -=50;
 }
 
